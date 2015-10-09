@@ -1,0 +1,247 @@
+R > setwd("~/Dropbox/works/Statistics/R.WD/class2014/")
+R > read.table("class_recordsv2.txt",header=F,stringsAsFactors=T)
+         V1 V2   V3 V4 V5 V6 V7 V8 V9 V10 V11 V12 V13 V14 V15 V16 V17 V18 V19 V20 V21 V22 V23 V24 V25 V26
+1  20128009  p    p  p  p  p  p  p  p   p   a   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p
+2  20091701  p    a  p  p  p  p  p  p   p   p   p   p   l   p   p   a   p   p   p   p   p   p   p   p   p
+3  20142505  p    p  p  p  p  p  p  p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p
+4  20102806  p    p  p  p  p  p  p  p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p
+5  20142508  p    a  p  p  p  p  p  p   p   p   p   p   p   a   l   p   p   p   p   p   p   p   p   p   p
+6  20132808  p    p  p  p  p  p  p  p   p   p   p   p   p   a   p   p   p   p   p   p   p   p   p   p   p
+7  20102203  p    a  p  p  p  p  p  p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p
+8  20102808  p    p  p  p  p  p  p  p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p
+9  20113103  p    p  p  p  p  p  p  p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p
+10 20113105  p    p  p  p  p  p  p  p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p
+11 20134308  p    a  p  p  p  p  l  p   p   p   p   p   p   p   p   a   a   p   p   p   a   p   p   p   p
+12 20143607  p <NA>  p  p  p  p  p  p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   l   p   p
+13 20102829  p    p  p  p  p  p  p  p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p
+14 20132527  p    p  p  p  p  p  p  p   p   p   p   p   p   p   a   p   p   p   p   p   p   p   p   p   p
+15 20103306  p <NA>  p  p  p  p  a  p   p   a   p   p   p   p   p   a   a   p   a   p   p   p   p   p   p
+16 20142535  p <NA>  p  p  p  p  p  p   p   p   a   p   a   p   l   p   l   p   a   p   a   p   a   p   p
+17 20123120  p    p  p  p  p  p  p  p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p
+18 20142538  p    p  p  p  p  p  p  p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p
+19 20143121  p    p  p  p  p  p  p  p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p
+20 20131709  p <NA>  p  p  p  p  p  p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p
+21 20114123  p    p  p  p  p  p  p  p   p   p   p   p   p   p   l   p   p   p   p   p   p   p   p   p   p
+22 20142551  p    p  p  p  p  p  p  p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p
+23 20092850  p    p  p  p  p  p  p  p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p
+24 20112567  p    p  p  p  p  p  p  p   p   p   p   p   p   p   l   p   l   a   p   a   p   p   l   a   p
+25 20113123  p    p  p  p  p  p  p  p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p
+26 20143217  p    p  p  p  p  p  p  p   p   p   p   p   p   p   p   p   p   a   p   p   p   p   p   p   p
+27 20143131  p    p  p  p  p  p  p  p   p   p   p   p   p   p   p   p   p   p   a   p   p   p   p   p   p
+28 20122216  p    p  p  p  p  p  p  p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   a   p
+29 20143134  p    p  p  p  p  p  p  p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p
+30 20121123  p    p  p  p  p  p  p  p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p
+31 20112579  p    p  p  p  p  p  p  p   p   p   p   p   p   a   p   p   p   p   p   p   p   p   p   p   p
+32 20144326  p    a  p  p  p  a  p  p   p   p   p   p   a   a   a   p   a   a   p   a   a   p   p   p   p
+33 20122121  p    p  p  p  p  p  p  p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p
+34 20122218  p    p  p  p  p  p  p  p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p
+35 20103317  p    p  p  p  p  p  a  p   a   a   p   p   a   p   p   p   p   p   a   p   p   p   p   p   p
+36 20103319  p    p  p  p  p  p  a  p   a   a   a   p   p   p   p   a   p   p   a   p   p   p   p   p   p
+37 20131121  p    p  p  p  p  p  p  p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p
+38 20134339  p    p  p  p  p  p  p  p   a   a   p   p   p   p   p   p   l   p   p   p   p   p   l   a   p
+39 20143221  p    p  p  p  p  p  p  p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p
+40 20144337  p    p  p  p  p  p  p  p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p
+41 20144338  p    p  p  p  p  p  a  p   p   p   p   p   p   p   l   a   p   p   p   p   p   p   p   p   p
+42 20144340  p    p  p  p  p  p  p  p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p
+43 20132582  p    p  p  p  p  p  p  p   p   p   p   p   l   p   p   a   l   p   p   p   p   p   p   p   p
+44 20131123  p    p  p  p  p  p  p  p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p
+45 20101722  p    p  p  p  p  p  p  p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p
+46 20132229  p    a  p  p  p  p  p  p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   l   p   p
+47 20102903  p    p  p  p  p  p  p  p   p   p   p   p   p   a   p   p   p   p   p   p   p   p   p   p   p
+48 20102908  p    a  p  p  p  p  p  p   p   p   p   p   p   a   a   p   l   p   a   p   p   p   p   p   p
+49 20144347  p    p  p  p  p  p  p  p   p   p   p   p   a   p   p   p   l   p   p   p   p   p   l   p   p
+50 20121133  p    p  p  p  p  p  p  p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p
+51 20142897  p    p  p  p  p  p  p  p   p   p   p   p   p   a   p   p   p   p   p   a   p   p   p   p   p
+52 20122609  p    p  p  p  p  p  p  p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p
+53 20113151  p    p  p  p  p  p  p  p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p
+54 20131726  p    p  p  p  p  p  p  p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p
+55 20081519  p    p  p  p  p  p  p  p   p   p   p   p   p   a   p   a   p   p   p   a   p   a   a   a   a
+56 20132613  p    p  p  p  p  p  p  p   p   p   p   p   l   p   p   p   p   p   p   p   p   p   p   p   p
+57 20143229  p    p  p  p  p  p  p  p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   a   p
+58 20143230  p    p  p  p  p  p  p  p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p
+59 20112633  p    p  p  p  p  p  p  p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p
+60 20126282  p    p  p  p  p  p  p  p   p   p   p   p   l   p   p   p   p   p   p   p   p   p   p   p   p
+61 20111239  p    p  p  p  p  p  p  p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p
+62 20133161  p    p  p  p  p  p  p  p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p
+63 20132933  p    p  p  p  p  p  p  p   a   p   p   p   p   p   p   p   p   a   p   p   p   a   a   a   a
+64 20142236  p <NA>  p  p  p  p  p  p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p
+65 20112944  p    p  p  p  p  p  p  p   p   p   p   p   l   p   p   p   l   p   p   a   p   p   p   a   a
+66 20132144  p    p  p  p  p  p  p  p   p   p   p   p   p   p   a   p   l   a   p   p   p   p   l   a   p
+67 20122150  p    p  p  p  p  p  p  p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p
+68 20143243  p    a  p  p  p  p  p  p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   l   p   p
+69 20143167  p    p  p  p  p  p  p  p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p
+70 20102952  p    p  p  p  p  p  p  p   p   p   p   p   p   a   p   p   p   p   p   p   p   p   p   p   p
+71 20114157  p    p  p  p  p  p  p  p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   p   a   p
+R > class.records<-read.table("class_recordsv2.txt",header=F,stringsAsFactors=T)
+R > str(class.records)
+'data.frame':	71 obs. of  26 variables:
+ $ V1 : int  20128009 20091701 20142505 20102806 20142508 20132808 20102203 20102808 20113103 20113105 ...
+ $ V2 : Factor w/ 1 level "p": 1 1 1 1 1 1 1 1 1 1 ...
+ $ V3 : Factor w/ 2 levels "a","p": 2 1 2 2 1 2 1 2 2 2 ...
+ $ V4 : Factor w/ 1 level "p": 1 1 1 1 1 1 1 1 1 1 ...
+ $ V5 : Factor w/ 1 level "p": 1 1 1 1 1 1 1 1 1 1 ...
+ $ V6 : Factor w/ 1 level "p": 1 1 1 1 1 1 1 1 1 1 ...
+ $ V7 : Factor w/ 2 levels "a","p": 2 2 2 2 2 2 2 2 2 2 ...
+ $ V8 : Factor w/ 3 levels "a","l","p": 3 3 3 3 3 3 3 3 3 3 ...
+ $ V9 : Factor w/ 1 level "p": 1 1 1 1 1 1 1 1 1 1 ...
+ $ V10: Factor w/ 2 levels "a","p": 2 2 2 2 2 2 2 2 2 2 ...
+ $ V11: Factor w/ 2 levels "a","p": 1 2 2 2 2 2 2 2 2 2 ...
+ $ V12: Factor w/ 2 levels "a","p": 2 2 2 2 2 2 2 2 2 2 ...
+ $ V13: Factor w/ 1 level "p": 1 1 1 1 1 1 1 1 1 1 ...
+ $ V14: Factor w/ 3 levels "a","l","p": 3 2 3 3 3 3 3 3 3 3 ...
+ $ V15: Factor w/ 2 levels "a","p": 2 2 2 2 1 1 2 2 2 2 ...
+ $ V16: Factor w/ 3 levels "a","l","p": 3 3 3 3 2 3 3 3 3 3 ...
+ $ V17: Factor w/ 2 levels "a","p": 2 1 2 2 2 2 2 2 2 2 ...
+ $ V18: Factor w/ 3 levels "a","l","p": 3 3 3 3 3 3 3 3 3 3 ...
+ $ V19: Factor w/ 2 levels "a","p": 2 2 2 2 2 2 2 2 2 2 ...
+ $ V20: Factor w/ 2 levels "a","p": 2 2 2 2 2 2 2 2 2 2 ...
+ $ V21: Factor w/ 2 levels "a","p": 2 2 2 2 2 2 2 2 2 2 ...
+ $ V22: Factor w/ 2 levels "a","p": 2 2 2 2 2 2 2 2 2 2 ...
+ $ V23: Factor w/ 2 levels "a","p": 2 2 2 2 2 2 2 2 2 2 ...
+ $ V24: Factor w/ 3 levels "a","l","p": 3 3 3 3 3 3 3 3 3 3 ...
+ $ V25: Factor w/ 2 levels "a","p": 2 2 2 2 2 2 2 2 2 2 ...
+ $ V26: Factor w/ 2 levels "a","p": 2 2 2 2 2 2 2 2 2 2 ...
+R > table(class.records[1,-1])
+, , V4 = p, V5 = p, V6 = p, V7 = a, V8 = a, V9 = p, V10 = a, V11 = a, V12 = a, V13 = p, V14 = a, V15 = a, V16 = a, V17 = a, V18 = a, V19 = a, V20 = a, V21 = a, V22 = a, V23 = a, V24 = a, V25 = a, V26 = a
+
+   V3
+V2  a p
+  p 0 0
+
+, , V4 = p, V5 = p, V6 = p, V7 = p, V8 = a, V9 = p, V10 = a, V11 = a, V12 = a, V13 = p, V14 = a, V15 = a, V16 = a, V17 = a, V18 = a, V19 = a, V20 = a, V21 = a, V22 = a, V23 = a, V24 = a, V25 = a, V26 = a
+
+   V3
+V2  a p
+  p 0 0
+
+, , V4 = p, V5 = p, V6 = p, V7 = a, V8 = l, V9 = p, V10 = a, V11 = a, V12 = a, V13 = p, V14 = a, V15 = a, V16 = a, V17 = a, V18 = a, V19 = a, V20 = a, V21 = a, V22 = a, V23 = a, V24 = a, V25 = a, V26 = a
+
+...
+
+R > summary(class.records[1,-1])
+ V2    V3    V4    V5    V6    V7    V8    V9    V10   V11   V12   V13   V14   V15   V16   V17   V18   V19   V20   V21   V22   V23   V24   V25   V26  
+ p:1   a:0   p:1   p:1   p:1   a:0   a:0   p:1   a:0   a:1   a:0   p:1   a:0   a:0   a:0   a:0   a:0   a:0   a:0   a:0   a:0   a:0   a:0   a:0   a:0  
+       p:1                     p:1   l:0         p:1   p:0   p:1         l:0   p:1   l:0   p:1   l:0   p:1   p:1   p:1   p:1   p:1   l:0   p:1   p:1  
+                                     p:1                                 p:1         p:1         p:1                                 p:1      
+R > class.records.2<-read.table("class_recordsv2.txt",header=F)
+R > summary(class.records.2[1,-1])
+      V2                 V3                 V4                 V5                 V6                 V7                 V8                 V9                V10                V11           
+ Length:1           Length:1           Length:1           Length:1           Length:1           Length:1           Length:1           Length:1           Length:1           Length:1          
+ Class :character   Class :character   Class :character   Class :character   Class :character   Class :character   Class :character   Class :character   Class :character   Class :character  
+ Mode  :character   Mode  :character   Mode  :character   Mode  :character   Mode  :character   Mode  :character   Mode  :character   Mode  :character   Mode  :character   Mode  :character  
+     V12                V13                V14                V15                V16                V17                V18                V19                V20                V21           
+ Length:1           Length:1           Length:1           Length:1           Length:1           Length:1           Length:1           Length:1           Length:1           Length:1          
+ Class :character   Class :character   Class :character   Class :character   Class :character   Class :character   Class :character   Class :character   Class :character   Class :character  
+ Mode  :character   Mode  :character   Mode  :character   Mode  :character   Mode  :character   Mode  :character   Mode  :character   Mode  :character   Mode  :character   Mode  :character  
+     V22                V23                V24                V25                V26           
+ Length:1           Length:1           Length:1           Length:1           Length:1          
+ Class :character   Class :character   Class :character   Class :character   Class :character  
+ Mode  :character   Mode  :character   Mode  :character   Mode  :character   Mode  :character  
+R > summary(as.vector(class.records.2[1,-1]))
+      V2                 V3                 V4                 V5                 V6                 V7                 V8                 V9                V10                V11           
+ Length:1           Length:1           Length:1           Length:1           Length:1           Length:1           Length:1           Length:1           Length:1           Length:1          
+ Class :character   Class :character   Class :character   Class :character   Class :character   Class :character   Class :character   Class :character   Class :character   Class :character  
+ Mode  :character   Mode  :character   Mode  :character   Mode  :character   Mode  :character   Mode  :character   Mode  :character   Mode  :character   Mode  :character   Mode  :character  
+     V12                V13                V14                V15                V16                V17                V18                V19                V20                V21           
+ Length:1           Length:1           Length:1           Length:1           Length:1           Length:1           Length:1           Length:1           Length:1           Length:1          
+ Class :character   Class :character   Class :character   Class :character   Class :character   Class :character   Class :character   Class :character   Class :character   Class :character  
+ Mode  :character   Mode  :character   Mode  :character   Mode  :character   Mode  :character   Mode  :character   Mode  :character   Mode  :character   Mode  :character   Mode  :character  
+     V22                V23                V24                V25                V26           
+ Length:1           Length:1           Length:1           Length:1           Length:1          
+ Class :character   Class :character   Class :character   Class :character   Class :character  
+ Mode  :character   Mode  :character   Mode  :character   Mode  :character   Mode  :character  
+R > ?as.matrix
+R > as.matrxi(class.records[,-1])
+에러: 함수 "as.matrxi"를 찾을 수 없습니다
+R > as.matrix(class.records[,-1])
+      V2  V3  V4  V5  V6  V7  V8  V9  V10 V11 V12 V13 V14 V15 V16 V17 V18 V19 V20 V21 V22 V23 V24 V25 V26
+ [1,] "p" "p" "p" "p" "p" "p" "p" "p" "p" "a" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p"
+ [2,] "p" "a" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "l" "p" "p" "a" "p" "p" "p" "p" "p" "p" "p" "p" "p"
+ [3,] "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p"
+ [4,] "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p"
+ [5,] "p" "a" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "a" "l" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p"
+ [6,] "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "a" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p"
+ [7,] "p" "a" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p"
+ [8,] "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p"
+ [9,] "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p"
+[10,] "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p"
+[11,] "p" "a" "p" "p" "p" "p" "l" "p" "p" "p" "p" "p" "p" "p" "p" "a" "a" "p" "p" "p" "a" "p" "p" "p" "p"
+[12,] "p" NA  "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "l" "p" "p"
+[13,] "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p"
+[14,] "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "a" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p"
+[15,] "p" NA  "p" "p" "p" "p" "a" "p" "p" "a" "p" "p" "p" "p" "p" "a" "a" "p" "a" "p" "p" "p" "p" "p" "p"
+[16,] "p" NA  "p" "p" "p" "p" "p" "p" "p" "p" "a" "p" "a" "p" "l" "p" "l" "p" "a" "p" "a" "p" "a" "p" "p"
+[17,] "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p"
+[18,] "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p"
+[19,] "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p"
+[20,] "p" NA  "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p"
+[21,] "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "l" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p"
+[22,] "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p"
+[23,] "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p"
+[24,] "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "l" "p" "l" "a" "p" "a" "p" "p" "l" "a" "p"
+[25,] "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p"
+[26,] "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "a" "p" "p" "p" "p" "p" "p" "p"
+[27,] "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "a" "p" "p" "p" "p" "p" "p"
+[28,] "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "a" "p"
+[29,] "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p"
+[30,] "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p"
+[31,] "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "a" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p"
+[32,] "p" "a" "p" "p" "p" "a" "p" "p" "p" "p" "p" "p" "a" "a" "a" "p" "a" "a" "p" "a" "a" "p" "p" "p" "p"
+[33,] "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p"
+[34,] "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p"
+[35,] "p" "p" "p" "p" "p" "p" "a" "p" "a" "a" "p" "p" "a" "p" "p" "p" "p" "p" "a" "p" "p" "p" "p" "p" "p"
+[36,] "p" "p" "p" "p" "p" "p" "a" "p" "a" "a" "a" "p" "p" "p" "p" "a" "p" "p" "a" "p" "p" "p" "p" "p" "p"
+[37,] "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p"
+[38,] "p" "p" "p" "p" "p" "p" "p" "p" "a" "a" "p" "p" "p" "p" "p" "p" "l" "p" "p" "p" "p" "p" "l" "a" "p"
+[39,] "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p"
+[40,] "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p"
+[41,] "p" "p" "p" "p" "p" "p" "a" "p" "p" "p" "p" "p" "p" "p" "l" "a" "p" "p" "p" "p" "p" "p" "p" "p" "p"
+[42,] "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p"
+[43,] "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "l" "p" "p" "a" "l" "p" "p" "p" "p" "p" "p" "p" "p"
+[44,] "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p"
+[45,] "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p"
+[46,] "p" "a" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "l" "p" "p"
+[47,] "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "a" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p"
+[48,] "p" "a" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "a" "a" "p" "l" "p" "a" "p" "p" "p" "p" "p" "p"
+[49,] "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "a" "p" "p" "p" "l" "p" "p" "p" "p" "p" "l" "p" "p"
+[50,] "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p"
+[51,] "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "a" "p" "p" "p" "p" "p" "a" "p" "p" "p" "p" "p"
+[52,] "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p"
+[53,] "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p"
+[54,] "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p"
+[55,] "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "a" "p" "a" "p" "p" "p" "a" "p" "a" "a" "a" "a"
+[56,] "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "l" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p"
+[57,] "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "a" "p"
+[58,] "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p"
+[59,] "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p"
+[60,] "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "l" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p"
+[61,] "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p"
+[62,] "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p"
+[63,] "p" "p" "p" "p" "p" "p" "p" "p" "a" "p" "p" "p" "p" "p" "p" "p" "p" "a" "p" "p" "p" "a" "a" "a" "a"
+[64,] "p" NA  "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p"
+[65,] "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "l" "p" "p" "p" "l" "p" "p" "a" "p" "p" "p" "a" "a"
+[66,] "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "a" "p" "l" "a" "p" "p" "p" "p" "l" "a" "p"
+[67,] "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p"
+[68,] "p" "a" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "l" "p" "p"
+[69,] "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p"
+[70,] "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "a" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p"
+[71,] "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "p" "a" "p"
+R > summary(as.matrix(class.records.2[,-1]))
+      V2                 V3                 V4                 V5                 V6                 V7                 V8                 V9                V10                V11           
+ Length:71          Length:71          Length:71          Length:71          Length:71          Length:71          Length:71          Length:71          Length:71          Length:71         
+ Class :character   Class :character   Class :character   Class :character   Class :character   Class :character   Class :character   Class :character   Class :character   Class :character  
+ Mode  :character   Mode  :character   Mode  :character   Mode  :character   Mode  :character   Mode  :character   Mode  :character   Mode  :character   Mode  :character   Mode  :character  
+     V12                V13                V14                V15                V16                V17                V18                V19                V20                V21           
+ Length:71          Length:71          Length:71          Length:71          Length:71          Length:71          Length:71          Length:71          Length:71          Length:71         
+ Class :character   Class :character   Class :character   Class :character   Class :character   Class :character   Class :character   Class :character   Class :character   Class :character  
+ Mode  :character   Mode  :character   Mode  :character   Mode  :character   Mode  :character   Mode  :character   Mode  :character   Mode  :character   Mode  :character   Mode  :character  
+     V22                V23                V24                V25                V26           
+ Length:71          Length:71          Length:71          Length:71          Length:71         
+ Class :character   Class :character   Class :character   Class :character   Class :character  
+ Mode  :character   Mode  :character   Mode  :character   Mode  :character   Mode  :character  
+R > table(as.matrix(class.records.2[1,-1]))
+
+ a  p 
+ 1 24 
+R > 
+                                       

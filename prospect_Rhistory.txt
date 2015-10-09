@@ -1,0 +1,18 @@
+## o, x 를 factor로 구분하기 위하여 stringsAsFactors 를 TRUE로 설정
+R > prospect1401<-read.table("prospect.txt",header=T,sep="",stringsAsFactors=T)
+R > str(prospect1401)
+'data.frame':	45 obs. of  3 variables:
+ $ Monty.Hall: Factor w/ 2 levels "o","x": 2 1 1 2 1 1 2 2 2 2 ...
+ $ wason1    : Factor w/ 2 levels "o","x": 2 2 2 1 2 2 2 2 2 2 ...
+ $ wason2    : Factor w/ 2 levels "o","x": 1 2 1 1 2 1 1 2 1 2 ...
+## table()함수를 prospect1401 자료의 각 열에 적용.
+R > apply(prospect1401,2,table)
+  Monty.Hall wason1 wason2
+o         14      3     23
+x         28     41     21
+## 비율로 전환
+R > round(prop.table(apply(prospect1401,2,table),margin=2),digits=2)
+  Monty.Hall wason1 wason2
+o       0.33   0.07   0.52
+x       0.67   0.93   0.48
+R > 

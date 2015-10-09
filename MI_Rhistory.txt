@@ -1,0 +1,545 @@
+## 다중지능테스트 자료 읽어들이기
+R > MI1402<-read.table("MI1402.txt",header=T,sep="")
+## 지료 입력 상태 확인
+R > head(MI1402)
+        ID Q_1 Q_2 Q_3 Q_4 Q_5 Q_6 Q_7 Q_8 Q_9 Q_10 Q_11 Q_12 Q_13 Q_14 Q_15 Q_16 Q_17 Q_18 Q_19 Q_20 Q_21 Q_22 Q_23 Q_24 Q_25 Q_26 Q_27 Q_28 Q_29 Q_30 Q_31 Q_32
+1 20122150   4   3   2   4   3   4   5   3   2    3    4    3    3    3    4    3    3    4    4    3    1    5    4    3    1    4    3    4    3    4    4    2
+2 20132229   1   2   2   4   3   5   3   1   1    4    1    2    5    3    4    4    2    1    4    3    2    5    5    1    1    1    3    4    4    4    3    3
+3 20112944   4   2   5   4   4   3   2   1   2    4    5    4    3    5    4    1    1    1    5    3    1    1    2    5    1    1    4    5    3    1    3    3
+4 20102203   3   5   1   1   2   3   2   2   3    2    1    1    4    2    3    2    3    1    2    1    1    1    1    1    1    1    1    1    2    4    2    2
+5 20143167   2   4   4   3   3   3   4   2   2    5    3    4    3    3    4    2    2    3    4    3    1    3    4    3    2    4    3    4    3    3    4    3
+6 20122121   5   3   4   2   4   4   5   1   5    2    2    1    5    5    3    3    5    1    5    2    5    4    5    1    5    1    5    3    5    3    4    2
+  Q_33 Q_34 Q_35 Q_36 Q_37 Q_38 Q_39 Q_40 Q_41 Q_42 Q_43 Q_44 Q_45 Q_46 Q_47 Q_48 Q_49 Q_50 Q_51 Q_52 Q_53 Q_54 Q_55 Q_56
+1    3    5    3    5    3    4    3    1    3    1    4    4    3    4    4    3    2    3    4    4    3    2    4    3
+2    1    2    2    4    4    5    3    1    1    2    3    2    4    3    2    1    1    2    3    1    1    2    2    3
+3    3    4    5    4    5    3    1    1    1    1    5    5    3    4    5    5    3    3    4    4    5    4    5    5
+4    2    2    2    1    1    4    1    2    1    3    3    1    1    3    3    1    1    1    1    2    2    1    1    1
+5    3    4    2    4    3    2    3    1    3    3    4    4    3    4    3    3    2    3    3    3    4    3    4    4
+6    5    2    1    2    5    3    4    1    5    3    4    3    5    5    4    1    5    2    4    3    5    1    5    4
+## 음악지능 점수 합산
+R > music.score<-MI1402$Q_1+MI1402$Q_9+MI1402$Q_17+MI1402$Q_25+MI1402$Q_33+MI1402$Q_41+MI1402$Q_49
+R > music.score
+ [1] 18  8 15 14 16 35 21 14 27 29 15 17 10 10 25 16 22 24 15 33 20 17 17 19 16 10 15 10 21 10 16 16  8 30 23 21 18  7 24 34 29 22 16 11 17 25 31 23 16 22 19 16 10
+[54] 21 16 21 19 15 25 22 34 19 21 11
+## 기타 다중지능 점수 합산
+R > body.score<-MI1402$Q_2+MI1402$Q_10+MI1402$Q_18+MI1402$Q_26+MI1402$Q_34+MI1402$Q_42+MI1402$Q_50
+R > logic.score<-MI1402$Q_3+MI1402$Q_11+MI1402$Q_19+MI1402$Q_27+MI1402$Q_35+MI1402$Q_43+MI1402$Q_51
+R > spatial.score<-MI1402$Q_4+MI1402$Q_12+MI1402$Q_20+MI1402$Q_28+MI1402$Q_36+MI1402$Q_44+MI1402$Q_52
+R > verbal.score<-MI1402$Q_5+MI1402$Q_13+MI1402$Q_21+MI1402$Q_29+MI1402$Q_37+MI1402$Q_45+MI1402$Q_53
+R > people.score<-MI1402$Q_5+MI1402$Q_13+MI1402$Q_21+MI1402$Q_29+MI1402$Q_37+MI1402$Q_45+MI1402$Q_53
+R > people.score<-MI1402$Q_6+MI1402$Q_14+MI1402$Q_22+MI1402$Q_30+MI1402$Q_38+MI1402$Q_46+MI1402$Q_54
+R > self.score<-MI1402$Q_7+MI1402$Q_15+MI1402$Q_23+MI1402$Q_31+MI1402$Q_39+MI1402$Q_47+MI1402$Q_55
+R > nature.score<-MI1402$Q_8+MI1402$Q_16+MI1402$Q_24+MI1402$Q_32+MI1402$Q_40+MI1402$Q_48+MI1402$Q_56
+## 학번을 첫째 열로 하는 data frame 구성
+R > MI.score<-data.frame(MI1402$ID, music.score,body.score,logic.score,spatial.score,verbal.score,people.score,self.score,nature.score)
+## 각 다중지능의 이름을 글자 벡터로 저장
+R > MI.names<-c("musical","bodily-kinesthetic","logical-nathematical","visual-spatial","verbal-lingusitic","interpersonal","intrapersonal","naturalistic")
+## MI.score 의 열 이름을 학번과 지능이름으로 교체
+R > dimnames(MI.score)[[2]]<-c("ID",MI.names)
+## MI.score 확인 
+R > head(MI.score)
+        ID musical bodily-kinesthetic logical-mathematical visual-spatial verbal-lingusitic interpersonal intrapersonal naturalistic
+1 20122150      18                 23                   24             27                19            26            28           18
+2 20132229       8                 14                   18             20                23            27            22           14
+3 20112944      15                 16                   33             29                24            21            22           21
+4 20102203      14                 15                   11              8                13            18            13           11
+5 20143167      16                 26                   23             25                20            21            26           18
+6 20122121      35                 14                   25             16                34            25            30           13
+## MI.score의 첫번째 학생 점수를 내림차순으로 정리하는 인덱스를 order() 함수를 이용하여 추출
+R > order(MI.score[1,-1],decreasing=T)[1:3]
+[1] 7 4 6
+## 3대 강점지능 추출
+R > MI.names[c(7,4,6)]
+[1] "intrapersonal"  "visual-spatial" "interpersonal" 
+## 모든 학생의 인덱스를 추출하기 위하여 apply() 함수 적용. MI.order 에 저장
+R > MI.order<-apply(MI.score[,-1],1,order,decreasing=TRUE)
+## apply() 함수의 적용 결과 8 by 64 행렬이 나옴에 유의. apply() 도움말 참조. 
+R > MI.order
+     [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10] [,11] [,12] [,13] [,14] [,15] [,16] [,17] [,18] [,19] [,20] [,21] [,22] [,23] [,24] [,25] [,26] [,27] [,28]
+[1,]    7    6    3    6    2    1    2    5    5     5     5     6     2     2     2     6     6     6     7     1     3     6     6     5     6     7     2     2
+[2,]    4    5    4    2    7    5    6    6    4     1     6     4     6     6     3     5     7     1     5     4     8     7     7     7     4     3     7     6
+[3,]    6    7    5    1    4    7    3    7    1     6     4     3     3     3     7     7     1     5     6     6     4     5     2     3     5     2     5     8
+[4,]    3    4    7    5    3    3    7    3    6     4     7     7     7     7     8     8     5     7     2     3     1     8     3     8     3     6     6     7
+[5,]    2    3    6    7    6    6    4    4    3     3     8     5     5     5     1     2     4     3     3     2     7     2     5     4     7     5     4     5
+[6,]    5    2    8    3    5    4    1    1    2     7     3     1     4     4     4     1     2     2     8     7     5     3     8     6     2     4     1     3
+[7,]    1    8    2    8    8    2    5    8    7     2     2     2     8     8     5     3     8     8     4     8     6     1     4     2     1     8     8     4
+[8,]    8    1    1    4    1    8    8    2    8     8     1     8     1     1     6     4     3     4     1     5     2     4     1     1     8     1     3     1
+     [,29] [,30] [,31] [,32] [,33] [,34] [,35] [,36] [,37] [,38] [,39] [,40] [,41] [,42] [,43] [,44] [,45] [,46] [,47] [,48] [,49] [,50] [,51] [,52] [,53] [,54]
+[1,]     6     6     6     6     6     1     7     2     5     6     1     1     1     3     2     3     6     7     1     2     6     5     6     4     2     6
+[2,]     5     7     5     7     7     5     6     1     6     7     6     6     6     1     6     6     4     1     6     6     7     7     7     7     5     7
+[3,]     7     3     7     2     4     2     3     4     7     5     5     7     2     5     3     7     5     4     7     4     5     6     4     5     4     3
+[4,]     2     2     1     5     3     6     1     6     4     4     7     2     4     6     4     1     3     2     2     7     3     3     3     2     3     2
+[5,]     4     4     3     3     5     7     2     3     2     8     2     3     7     7     7     4     7     3     3     8     4     1     2     3     8     5
+[6,]     3     5     8     4     8     8     4     7     8     3     3     4     3     2     1     5     1     5     4     3     2     2     8     6     6     1
+[7,]     8     8     4     1     2     3     5     5     1     2     4     5     5     4     8     8     2     6     8     5     1     8     5     8     7     4
+[8,]     1     1     2     8     1     4     8     8     3     1     8     8     8     8     5     2     8     8     5     1     8     4     1     1     1     8
+     [,55] [,56] [,57] [,58] [,59] [,60] [,61] [,62] [,63] [,64]
+[1,]     7     1     3     7     1     6     1     7     6     8
+[2,]     6     5     7     6     4     1     5     6     7     7
+[3,]     5     6     2     5     5     2     6     2     5     6
+[4,]     3     3     6     4     8     7     7     5     1     5
+[5,]     4     7     5     3     6     5     4     1     3     4
+[6,]     2     4     1     8     7     3     2     3     2     1
+[7,]     8     2     4     1     3     4     3     4     4     2
+[8,]     1     8     8     2     2     8     8     8     8     3
+## 계산결과 확인
+R > MI.order[,1]
+[1] 7 4 6 3 2 5 1 8
+## 숫자로 확인
+R > MI.score[1,-1][MI.order[,1]]
+  intrapersonal visual-spatial interpersonal logical-mathematical bodily-kinesthetic verbal-lingusitic musical naturalistic
+1            28             27            26                   24                 23                19      18           18
+R > MI.score[2,-1][MI.order[,2]]
+  interpersonal verbal-lingusitic intrapersonal visual-spatial logical-mathematical bodily-kinesthetic naturalistic musical
+2            27                23            22             20                   18                 14           14       8
+R > MI.score[3,-1][MI.order[,3]]
+  logical-mathematical visual-spatial verbal-lingusitic intrapersonal interpersonal naturalistic bodily-kinesthetic musical
+3                   33             29                24            22            21           21                 16      15
+## 3대 강점 지능 확인
+R > MI.names[MI.order[1:3,1]]
+[1] "intrapersonal"  "visual-spatial" "interpersonal" 
+## 3명으로 확장하였을 때 매트릭스가 아닌 벡터로 나옴에 유의. 위에 나온 순서와 같음.
+R > MI.names[MI.order[1:3,1:3]]
+[1] "intrapersonal"        "visual-spatial"       "interpersonal"        "interpersonal"        "verbal-lingusitic"    "intrapersonal"        "logical-mathematical"
+[8] "visual-spatial"       "verbal-lingusitic"  
+## 3대 강점 요인 뿐 아니라 세 학생의 지능을 높은 순서로 살펴보면 추출함수의 역할을 알 수 있음. 
+R > MI.names[MI.order[,1:3]]
+ [1] "intrapersonal"        "visual-spatial"       "interpersonal"        "logical-mathematical" "bodily-kinesthetic"   "verbal-lingusitic"   
+ [7] "musical"              "naturalistic"         "interpersonal"        "verbal-lingusitic"    "intrapersonal"        "visual-spatial"      
+[13] "logical-mathematical" "bodily-kinesthetic"   "naturalistic"         "musical"              "logical-mathematical" "visual-spatial"      
+[19] "verbal-lingusitic"    "intrapersonal"        "interpersonal"        "naturalistic"         "bodily-kinesthetic"   "musical"
+## 하나의 긴 벡터로 나오기 때문에 학생별로 정리하려면 나온 결과를 매트릭스로 받아야 함.
+R > matrix(MI.names[MI.order[,1:3]],ncol=8,byrow=T,dimnames=list(MI.score$ID[1:3],paste(1:8)))
+         1                      2                   3                   4                      5                      6                    7                    8             
+20122150 "intrapersonal"        "visual-spatial"    "interpersonal"     "logical-mathematical" "bodily-kinesthetic"   "verbal-lingusitic"  "musical"            "naturalistic"
+20132229 "interpersonal"        "verbal-lingusitic" "intrapersonal"     "visual-spatial"       "logical-mathematical" "bodily-kinesthetic" "naturalistic"       "musical"     
+20112944 "logical-mathematical" "visual-spatial"    "verbal-lingusitic" "intrapersonal"        "interpersonal"        "naturalistic"       "bodily-kinesthetic" "musical"     
+## 모든 학생에게 적용. MI.sort로 저장
+R > MI.sort<-matrix(MI.names[MI.order],ncol=8,byrow=T,dimnames=list(MI.score$ID,1:8))
+R > MI.sort
+         1                      2                      3                      4                      5                      6                      7                      8                     
+20122150 "intrapersonal"        "visual-spatial"       "interpersonal"        "logical-mathematical" "bodily-kinesthetic"   "verbal-lingusitic"    "musical"              "naturalistic"        
+20132229 "interpersonal"        "verbal-lingusitic"    "intrapersonal"        "visual-spatial"       "logical-mathematical" "bodily-kinesthetic"   "naturalistic"         "musical"             
+20112944 "logical-mathematical" "visual-spatial"       "verbal-lingusitic"    "intrapersonal"        "interpersonal"        "naturalistic"         "bodily-kinesthetic"   "musical"             
+20102203 "interpersonal"        "bodily-kinesthetic"   "musical"              "verbal-lingusitic"    "intrapersonal"        "logical-mathematical" "naturalistic"         "visual-spatial"      
+20143167 "bodily-kinesthetic"   "intrapersonal"        "visual-spatial"       "logical-mathematical" "interpersonal"        "verbal-lingusitic"    "naturalistic"         "musical"             
+20122121 "musical"              "verbal-lingusitic"    "intrapersonal"        "logical-mathematical" "interpersonal"        "visual-spatial"       "bodily-kinesthetic"   "naturalistic"        
+20143230 "bodily-kinesthetic"   "interpersonal"        "logical-mathematical" "intrapersonal"        "visual-spatial"       "musical"              "verbal-lingusitic"    "naturalistic"        
+20121123 "verbal-lingusitic"    "interpersonal"        "intrapersonal"        "logical-mathematical" "visual-spatial"       "musical"              "naturalistic"         "bodily-kinesthetic"  
+20143121 "verbal-lingusitic"    "visual-spatial"       "musical"              "interpersonal"        "logical-mathematical" "bodily-kinesthetic"   "intrapersonal"        "naturalistic"        
+20143134 "verbal-lingusitic"    "musical"              "interpersonal"        "visual-spatial"       "logical-mathematical" "intrapersonal"        "bodily-kinesthetic"   "naturalistic"        
+20131726 "verbal-lingusitic"    "interpersonal"        "visual-spatial"       "intrapersonal"        "naturalistic"         "logical-mathematical" "bodily-kinesthetic"   "musical"             
+20131709 "interpersonal"        "visual-spatial"       "logical-mathematical" "intrapersonal"        "verbal-lingusitic"    "musical"              "bodily-kinesthetic"   "naturalistic"        
+20144347 "bodily-kinesthetic"   "interpersonal"        "logical-mathematical" "intrapersonal"        "verbal-lingusitic"    "visual-spatial"       "naturalistic"         "musical"             
+20144338 "bodily-kinesthetic"   "interpersonal"        "logical-mathematical" "intrapersonal"        "verbal-lingusitic"    "visual-spatial"       "naturalistic"         "musical"             
+20128009 "bodily-kinesthetic"   "logical-mathematical" "intrapersonal"        "naturalistic"         "musical"              "visual-spatial"       "verbal-lingusitic"    "interpersonal"       
+20131123 "interpersonal"        "verbal-lingusitic"    "intrapersonal"        "naturalistic"         "bodily-kinesthetic"   "musical"              "logical-mathematical" "visual-spatial"      
+20113105 "interpersonal"        "intrapersonal"        "musical"              "verbal-lingusitic"    "visual-spatial"       "bodily-kinesthetic"   "naturalistic"         "logical-mathematical"
+20142508 "interpersonal"        "musical"              "verbal-lingusitic"    "intrapersonal"        "logical-mathematical" "bodily-kinesthetic"   "naturalistic"         "visual-spatial"      
+20142505 "intrapersonal"        "verbal-lingusitic"    "interpersonal"        "bodily-kinesthetic"   "logical-mathematical" "naturalistic"         "visual-spatial"       "musical"             
+20123120 "musical"              "visual-spatial"       "interpersonal"        "logical-mathematical" "bodily-kinesthetic"   "intrapersonal"        "naturalistic"         "verbal-lingusitic"   
+20126282 "logical-mathematical" "naturalistic"         "visual-spatial"       "musical"              "intrapersonal"        "verbal-lingusitic"    "interpersonal"        "bodily-kinesthetic"  
+20081519 "interpersonal"        "intrapersonal"        "verbal-lingusitic"    "naturalistic"         "bodily-kinesthetic"   "logical-mathematical" "musical"              "visual-spatial"      
+20102829 "interpersonal"        "intrapersonal"        "bodily-kinesthetic"   "logical-mathematical" "verbal-lingusitic"    "naturalistic"         "visual-spatial"       "musical"             
+20092850 "verbal-lingusitic"    "intrapersonal"        "logical-mathematical" "naturalistic"         "visual-spatial"       "interpersonal"        "bodily-kinesthetic"   "musical"             
+20143607 "interpersonal"        "visual-spatial"       "verbal-lingusitic"    "logical-mathematical" "intrapersonal"        "bodily-kinesthetic"   "musical"              "naturalistic"        
+<NA>     "intrapersonal"        "logical-mathematical" "bodily-kinesthetic"   "interpersonal"        "verbal-lingusitic"    "visual-spatial"       "naturalistic"         "musical"             
+20102903 "bodily-kinesthetic"   "intrapersonal"        "verbal-lingusitic"    "interpersonal"        "visual-spatial"       "musical"              "naturalistic"         "logical-mathematical"
+20132808 "bodily-kinesthetic"   "interpersonal"        "naturalistic"         "intrapersonal"        "verbal-lingusitic"    "logical-mathematical" "visual-spatial"       "musical"             
+20142538 "interpersonal"        "verbal-lingusitic"    "intrapersonal"        "bodily-kinesthetic"   "visual-spatial"       "logical-mathematical" "naturalistic"         "musical"             
+20102952 "interpersonal"        "intrapersonal"        "logical-mathematical" "bodily-kinesthetic"   "visual-spatial"       "verbal-lingusitic"    "naturalistic"         "musical"             
+20131121 "interpersonal"        "verbal-lingusitic"    "intrapersonal"        "musical"              "logical-mathematical" "naturalistic"         "visual-spatial"       "bodily-kinesthetic"  
+20122216 "interpersonal"        "intrapersonal"        "bodily-kinesthetic"   "verbal-lingusitic"    "logical-mathematical" "visual-spatial"       "musical"              "naturalistic"        
+20122218 "interpersonal"        "intrapersonal"        "visual-spatial"       "logical-mathematical" "verbal-lingusitic"    "naturalistic"         "bodily-kinesthetic"   "musical"             
+20132613 "musical"              "verbal-lingusitic"    "bodily-kinesthetic"   "interpersonal"        "intrapersonal"        "naturalistic"         "logical-mathematical" "visual-spatial"      
+20132582 "intrapersonal"        "interpersonal"        "logical-mathematical" "musical"              "bodily-kinesthetic"   "visual-spatial"       "verbal-lingusitic"    "naturalistic"        
+20143243 "bodily-kinesthetic"   "musical"              "visual-spatial"       "interpersonal"        "logical-mathematical" "intrapersonal"        "verbal-lingusitic"    "naturalistic"        
+20102808 "verbal-lingusitic"    "interpersonal"        "intrapersonal"        "visual-spatial"       "bodily-kinesthetic"   "naturalistic"         "musical"              "logical-mathematical"
+20091701 "interpersonal"        "intrapersonal"        "verbal-lingusitic"    "visual-spatial"       "naturalistic"         "logical-mathematical" "bodily-kinesthetic"   "musical"             
+20144337 "musical"              "interpersonal"        "verbal-lingusitic"    "intrapersonal"        "bodily-kinesthetic"   "logical-mathematical" "visual-spatial"       "naturalistic"        
+20111239 "musical"              "interpersonal"        "intrapersonal"        "bodily-kinesthetic"   "logical-mathematical" "visual-spatial"       "verbal-lingusitic"    "naturalistic"        
+20144340 "musical"              "interpersonal"        "bodily-kinesthetic"   "visual-spatial"       "intrapersonal"        "logical-mathematical" "verbal-lingusitic"    "naturalistic"        
+20103306 "logical-mathematical" "musical"              "verbal-lingusitic"    "interpersonal"        "intrapersonal"        "bodily-kinesthetic"   "visual-spatial"       "naturalistic"        
+20103317 "bodily-kinesthetic"   "interpersonal"        "logical-mathematical" "visual-spatial"       "intrapersonal"        "musical"              "naturalistic"         "verbal-lingusitic"   
+20103319 "logical-mathematical" "interpersonal"        "intrapersonal"        "musical"              "visual-spatial"       "verbal-lingusitic"    "naturalistic"         "bodily-kinesthetic"  
+20121133 "interpersonal"        "visual-spatial"       "verbal-lingusitic"    "logical-mathematical" "intrapersonal"        "musical"              "bodily-kinesthetic"   "naturalistic"        
+20122609 "intrapersonal"        "musical"              "visual-spatial"       "bodily-kinesthetic"   "logical-mathematical" "verbal-lingusitic"    "interpersonal"        "naturalistic"        
+20143229 "musical"              "interpersonal"        "intrapersonal"        "bodily-kinesthetic"   "logical-mathematical" "visual-spatial"       "naturalistic"         "verbal-lingusitic"   
+20102806 "bodily-kinesthetic"   "interpersonal"        "visual-spatial"       "intrapersonal"        "naturalistic"         "logical-mathematical" "verbal-lingusitic"    "musical"             
+20143221 "interpersonal"        "intrapersonal"        "verbal-lingusitic"    "logical-mathematical" "visual-spatial"       "bodily-kinesthetic"   "musical"              "naturalistic"        
+20143131 "verbal-lingusitic"    "intrapersonal"        "interpersonal"        "logical-mathematical" "musical"              "bodily-kinesthetic"   "naturalistic"         "visual-spatial"      
+20112633 "interpersonal"        "intrapersonal"        "visual-spatial"       "logical-mathematical" "bodily-kinesthetic"   "naturalistic"         "verbal-lingusitic"    "musical"             
+20112579 "visual-spatial"       "intrapersonal"        "verbal-lingusitic"    "bodily-kinesthetic"   "logical-mathematical" "interpersonal"        "naturalistic"         "musical"             
+20142236 "bodily-kinesthetic"   "verbal-lingusitic"    "visual-spatial"       "logical-mathematical" "naturalistic"         "interpersonal"        "intrapersonal"        "musical"             
+20142897 "interpersonal"        "intrapersonal"        "logical-mathematical" "bodily-kinesthetic"   "verbal-lingusitic"    "musical"              "visual-spatial"       "naturalistic"        
+20133161 "intrapersonal"        "interpersonal"        "verbal-lingusitic"    "logical-mathematical" "visual-spatial"       "bodily-kinesthetic"   "naturalistic"         "musical"             
+20142551 "musical"              "verbal-lingusitic"    "interpersonal"        "logical-mathematical" "intrapersonal"        "visual-spatial"       "bodily-kinesthetic"   "naturalistic"        
+20134339 "logical-mathematical" "intrapersonal"        "bodily-kinesthetic"   "interpersonal"        "verbal-lingusitic"    "musical"              "visual-spatial"       "naturalistic"        
+20142535 "intrapersonal"        "interpersonal"        "verbal-lingusitic"    "visual-spatial"       "logical-mathematical" "naturalistic"         "musical"              "bodily-kinesthetic"  
+20101722 "musical"              "visual-spatial"       "verbal-lingusitic"    "naturalistic"         "interpersonal"        "intrapersonal"        "logical-mathematical" "bodily-kinesthetic"  
+20113103 "interpersonal"        "musical"              "bodily-kinesthetic"   "intrapersonal"        "verbal-lingusitic"    "logical-mathematical" "visual-spatial"       "naturalistic"        
+20132527 "musical"              "verbal-lingusitic"    "interpersonal"        "intrapersonal"        "visual-spatial"       "bodily-kinesthetic"   "logical-mathematical" "naturalistic"        
+20114157 "intrapersonal"        "interpersonal"        "bodily-kinesthetic"   "verbal-lingusitic"    "musical"              "logical-mathematical" "visual-spatial"       "naturalistic"        
+20113151 "interpersonal"        "intrapersonal"        "verbal-lingusitic"    "musical"              "logical-mathematical" "bodily-kinesthetic"   "visual-spatial"       "naturalistic"        
+20113123 "naturalistic"         "intrapersonal"        "interpersonal"        "verbal-lingusitic"    "visual-spatial"       "musical"              "bodily-kinesthetic"   "logical-mathematical"
+R > 
+## 상위 3가지 강점지능만 추출
+R > MI.sort[,1:3]
+         1                      2                      3                     
+20122150 "intrapersonal"        "visual-spatial"       "interpersonal"       
+20132229 "interpersonal"        "verbal-lingusitic"    "intrapersonal"       
+20112944 "logical-mathematical" "visual-spatial"       "verbal-lingusitic"   
+20102203 "interpersonal"        "bodily-kinesthetic"   "musical"             
+20143167 "bodily-kinesthetic"   "intrapersonal"        "visual-spatial"      
+20122121 "musical"              "verbal-lingusitic"    "intrapersonal"       
+20143230 "bodily-kinesthetic"   "interpersonal"        "logical-mathematical"
+20121123 "verbal-lingusitic"    "interpersonal"        "intrapersonal"       
+20143121 "verbal-lingusitic"    "visual-spatial"       "musical"             
+20143134 "verbal-lingusitic"    "musical"              "interpersonal"       
+20131726 "verbal-lingusitic"    "interpersonal"        "visual-spatial"      
+20131709 "interpersonal"        "visual-spatial"       "logical-mathematical"
+20144347 "bodily-kinesthetic"   "interpersonal"        "logical-mathematical"
+20144338 "bodily-kinesthetic"   "interpersonal"        "logical-mathematical"
+20128009 "bodily-kinesthetic"   "logical-mathematical" "intrapersonal"       
+20131123 "interpersonal"        "verbal-lingusitic"    "intrapersonal"       
+20113105 "interpersonal"        "intrapersonal"        "musical"             
+20142508 "interpersonal"        "musical"              "verbal-lingusitic"   
+20142505 "intrapersonal"        "verbal-lingusitic"    "interpersonal"       
+20123120 "musical"              "visual-spatial"       "interpersonal"       
+20126282 "logical-mathematical" "naturalistic"         "visual-spatial"      
+20081519 "interpersonal"        "intrapersonal"        "verbal-lingusitic"   
+20102829 "interpersonal"        "intrapersonal"        "bodily-kinesthetic"  
+20092850 "verbal-lingusitic"    "intrapersonal"        "logical-mathematical"
+20143607 "interpersonal"        "visual-spatial"       "verbal-lingusitic"   
+<NA>     "intrapersonal"        "logical-mathematical" "bodily-kinesthetic"  
+20102903 "bodily-kinesthetic"   "intrapersonal"        "verbal-lingusitic"   
+20132808 "bodily-kinesthetic"   "interpersonal"        "naturalistic"        
+20142538 "interpersonal"        "verbal-lingusitic"    "intrapersonal"       
+20102952 "interpersonal"        "intrapersonal"        "logical-mathematical"
+20131121 "interpersonal"        "verbal-lingusitic"    "intrapersonal"       
+20122216 "interpersonal"        "intrapersonal"        "bodily-kinesthetic"  
+20122218 "interpersonal"        "intrapersonal"        "visual-spatial"      
+20132613 "musical"              "verbal-lingusitic"    "bodily-kinesthetic"  
+20132582 "intrapersonal"        "interpersonal"        "logical-mathematical"
+20143243 "bodily-kinesthetic"   "musical"              "visual-spatial"      
+20102808 "verbal-lingusitic"    "interpersonal"        "intrapersonal"       
+20091701 "interpersonal"        "intrapersonal"        "verbal-lingusitic"   
+20144337 "musical"              "interpersonal"        "verbal-lingusitic"   
+20111239 "musical"              "interpersonal"        "intrapersonal"       
+20144340 "musical"              "interpersonal"        "bodily-kinesthetic"  
+20103306 "logical-mathematical" "musical"              "verbal-lingusitic"   
+20103317 "bodily-kinesthetic"   "interpersonal"        "logical-mathematical"
+20103319 "logical-mathematical" "interpersonal"        "intrapersonal"       
+20121133 "interpersonal"        "visual-spatial"       "verbal-lingusitic"   
+20122609 "intrapersonal"        "musical"              "visual-spatial"      
+20143229 "musical"              "interpersonal"        "intrapersonal"       
+20102806 "bodily-kinesthetic"   "interpersonal"        "visual-spatial"      
+20143221 "interpersonal"        "intrapersonal"        "verbal-lingusitic"   
+20143131 "verbal-lingusitic"    "intrapersonal"        "interpersonal"       
+20112633 "interpersonal"        "intrapersonal"        "visual-spatial"      
+20112579 "visual-spatial"       "intrapersonal"        "verbal-lingusitic"   
+20142236 "bodily-kinesthetic"   "verbal-lingusitic"    "visual-spatial"      
+20142897 "interpersonal"        "intrapersonal"        "logical-mathematical"
+20133161 "intrapersonal"        "interpersonal"        "verbal-lingusitic"   
+20142551 "musical"              "verbal-lingusitic"    "interpersonal"       
+20134339 "logical-mathematical" "intrapersonal"        "bodily-kinesthetic"  
+20142535 "intrapersonal"        "interpersonal"        "verbal-lingusitic"   
+20101722 "musical"              "visual-spatial"       "verbal-lingusitic"   
+20113103 "interpersonal"        "musical"              "bodily-kinesthetic"  
+20132527 "musical"              "verbal-lingusitic"    "interpersonal"       
+20114157 "intrapersonal"        "interpersonal"        "bodily-kinesthetic"  
+20113151 "interpersonal"        "intrapersonal"        "verbal-lingusitic"   
+20113123 "naturalistic"         "intrapersonal"        "interpersonal"       
+R > 
+R > MI.sort[,1:3]
+         musical                bodily-kinesthetic     logical-mathematical  
+20122150 "intrapersonal"        "visual-spatial"       "interpersonal"       
+20132229 "interpersonal"        "verbal-lingusitic"    "intrapersonal"       
+20112944 "logical-mathematical" "visual-spatial"       "verbal-lingusitic"   
+20102203 "interpersonal"        "bodily-kinesthetic"   "musical"             
+20143167 "bodily-kinesthetic"   "intrapersonal"        "visual-spatial"      
+20122121 "musical"              "verbal-lingusitic"    "intrapersonal"       
+20143230 "bodily-kinesthetic"   "interpersonal"        "logical-mathematical"
+20121123 "verbal-lingusitic"    "interpersonal"        "intrapersonal"       
+20143121 "verbal-lingusitic"    "visual-spatial"       "musical"             
+20143134 "verbal-lingusitic"    "musical"              "interpersonal"       
+20131726 "verbal-lingusitic"    "interpersonal"        "visual-spatial"      
+20131709 "interpersonal"        "visual-spatial"       "logical-mathematical"
+20144347 "bodily-kinesthetic"   "interpersonal"        "logical-mathematical"
+20144338 "bodily-kinesthetic"   "interpersonal"        "logical-mathematical"
+20128009 "bodily-kinesthetic"   "logical-mathematical" "intrapersonal"       
+20131123 "interpersonal"        "verbal-lingusitic"    "intrapersonal"       
+20113105 "interpersonal"        "intrapersonal"        "musical"             
+20142508 "interpersonal"        "musical"              "verbal-lingusitic"   
+20142505 "intrapersonal"        "verbal-lingusitic"    "interpersonal"       
+20123120 "musical"              "visual-spatial"       "interpersonal"       
+20126282 "logical-mathematical" "naturalistic"         "visual-spatial"      
+20081519 "interpersonal"        "intrapersonal"        "verbal-lingusitic"   
+20102829 "interpersonal"        "intrapersonal"        "bodily-kinesthetic"  
+20092850 "verbal-lingusitic"    "intrapersonal"        "logical-mathematical"
+20143607 "interpersonal"        "visual-spatial"       "verbal-lingusitic"   
+<NA>     "intrapersonal"        "logical-mathematical" "bodily-kinesthetic"  
+20102903 "bodily-kinesthetic"   "intrapersonal"        "verbal-lingusitic"   
+20132808 "bodily-kinesthetic"   "interpersonal"        "naturalistic"        
+20142538 "interpersonal"        "verbal-lingusitic"    "intrapersonal"       
+20102952 "interpersonal"        "intrapersonal"        "logical-mathematical"
+20131121 "interpersonal"        "verbal-lingusitic"    "intrapersonal"       
+20122216 "interpersonal"        "intrapersonal"        "bodily-kinesthetic"  
+20122218 "interpersonal"        "intrapersonal"        "visual-spatial"      
+20132613 "musical"              "verbal-lingusitic"    "bodily-kinesthetic"  
+20132582 "intrapersonal"        "interpersonal"        "logical-mathematical"
+20143243 "bodily-kinesthetic"   "musical"              "visual-spatial"      
+20102808 "verbal-lingusitic"    "interpersonal"        "intrapersonal"       
+20091701 "interpersonal"        "intrapersonal"        "verbal-lingusitic"   
+20144337 "musical"              "interpersonal"        "verbal-lingusitic"   
+20111239 "musical"              "interpersonal"        "intrapersonal"       
+20144340 "musical"              "interpersonal"        "bodily-kinesthetic"  
+20103306 "logical-mathematical" "musical"              "verbal-lingusitic"   
+20103317 "bodily-kinesthetic"   "interpersonal"        "logical-mathematical"
+20103319 "logical-mathematical" "interpersonal"        "intrapersonal"       
+20121133 "interpersonal"        "visual-spatial"       "verbal-lingusitic"   
+20122609 "intrapersonal"        "musical"              "visual-spatial"      
+20143229 "musical"              "interpersonal"        "intrapersonal"       
+20102806 "bodily-kinesthetic"   "interpersonal"        "visual-spatial"      
+20143221 "interpersonal"        "intrapersonal"        "verbal-lingusitic"   
+20143131 "verbal-lingusitic"    "intrapersonal"        "interpersonal"       
+20112633 "interpersonal"        "intrapersonal"        "visual-spatial"      
+20112579 "visual-spatial"       "intrapersonal"        "verbal-lingusitic"   
+20142236 "bodily-kinesthetic"   "verbal-lingusitic"    "visual-spatial"      
+20142897 "interpersonal"        "intrapersonal"        "logical-mathematical"
+20133161 "intrapersonal"        "interpersonal"        "verbal-lingusitic"   
+20142551 "musical"              "verbal-lingusitic"    "interpersonal"       
+20134339 "logical-mathematical" "intrapersonal"        "bodily-kinesthetic"  
+20142535 "intrapersonal"        "interpersonal"        "verbal-lingusitic"   
+20101722 "musical"              "visual-spatial"       "verbal-lingusitic"   
+20113103 "interpersonal"        "musical"              "bodily-kinesthetic"  
+20132527 "musical"              "verbal-lingusitic"    "interpersonal"       
+20114157 "intrapersonal"        "interpersonal"        "bodily-kinesthetic"  
+20113151 "interpersonal"        "intrapersonal"        "verbal-lingusitic"   
+20113123 "naturalistic"         "intrapersonal"        "interpersonal"       
+R > 
+## NA가 누구인지 추측하기 위한 과정(join 함수를 이용하려면 ID에 NA가 없어야 하기 때문에)
+# 출석부에 있는 ID로 Big5 계산에도 참여한 ID의 index 추출 
+R > which(class.roll$ID %in% bfi1402$ID)
+ [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 22 23 25 27 28 29 30 31 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 64 65 67 68 69
+[64] 70 71
+# 참여한 ID의 index 를 present 에 저장
+R > present<-which(class.roll$ID %in% bfi1402$ID)
+#  참여하지 않은 ID의 index 를 absent 에 저장
+R > absent<-(1:71)[-present]
+# 참여하지 않은 ID 추출
+R > class.roll$ID[absent]
+[1] 20114123 20112567 20143217 20144326 20132933 20132144
+# 참여하지 않은 명단 추출
+R > class.roll$name[absent]
+[1] "문유진" "박지수" "박혜린" "손희찬" "조태희" "한도현"
+# MI에 참여하지 않은 ID 추출
+R > MI.present<-which(class.roll$ID %in% MI1402$ID)
+R > MI.absent<-(1:71)[-MI.present]
+R > MI.absent
+[1] 11 21 24 26 32 48 63 66
+R > class.roll$ID[MI.absent]
+[1] 20134308 20114123 20112567 20143217 20144326 20102908 20132933 20132144
+# MI에 참여하지 않은 명단 추출
+R > class.roll$name[MI.absent]
+[1] "김기욱" "문유진" "박지수" "박혜린" "손희찬" "이승민" "조태희" "한도현"
+# 김기욱은 시간이 없어서 MI에는 참여하지 못하였다고 진술하였으므로 양쪽에 다 나오지 않은 "이승민"을 NA로 추정
+## ID의 NA값을 "이승민"의 학번으로 교체하는 과정(그냥 which(MI1402$ID == NA)는 왜 안 되는지?)
+R > which(is.na(MI1402$ID))
+[1] 26
+R > MI1402$ID[26]<-20102908
+## MI.sort는 character matrix이기 때문에 join()을 이용하려면 data.frame으로 전환하여야 함. 
+R > str(MI.sort)
+ chr [1:64, 1:8] "intrapersonal" "interpersonal" "logical-mathematical" "interpersonal" "bodily-kinesthetic" "musical" "bodily-kinesthetic" "verbal-lingusitic" ...
+ - attr(*, "dimnames")=List of 2
+  ..$ : chr [1:64] "20122150" "20132229" "20112944" "20102203" ...
+  ..$ : chr [1:8] "1" "2" "3" "4" ...
+# MI.sort 의 경우 row.names()가 학번들로 되어 있고 character로 설정되어 있음.
+R > dimnames(MI.sort)
+[[1]]
+ [1] "20122150" "20132229" "20112944" "20102203" "20143167" "20122121" "20143230" "20121123" "20143121" "20143134" "20131726" "20131709" "20144347" "20144338" "20128009" "20131123" "20113105"
+[18] "20142508" "20142505" "20123120" "20126282" "20081519" "20102829" "20092850" "20143607" NA         "20102903" "20132808" "20142538" "20102952" "20131121" "20122216" "20122218" "20132613"
+[35] "20132582" "20143243" "20102808" "20091701" "20144337" "20111239" "20144340" "20103306" "20103317" "20103319" "20121133" "20122609" "20143229" "20102806" "20143221" "20143131" "20112633"
+[52] "20112579" "20142236" "20142897" "20133161" "20142551" "20134339" "20142535" "20101722" "20113103" "20132527" "20114157" "20113151" "20113123"
+
+[[2]]
+[1] "1" "2" "3" "4" "5" "6" "7" "8"
+## ID를 첫번째 변수로 하는 data.frame 으로 전환, row.names는 index로 설정 
+R > MI.sort.df<-data.frame(MI1402$ID,MI.sort,row.names=1:64)
+# data.frame으로 전환하는 가운데 변수명을 잃어 버림.
+R > str(MI.sort.df)
+'data.frame':	64 obs. of  9 variables:
+ $ MI1402.ID: num  20122150 20132229 20112944 20102203 20143167 ...
+ $ X1       : chr  "intrapersonal" "interpersonal" "logical-mathematical" "interpersonal" ...
+ $ X2       : chr  "visual-spatial" "verbal-lingusitic" "visual-spatial" "bodily-kinesthetic" ...
+ $ X3       : chr  "interpersonal" "intrapersonal" "verbal-lingusitic" "musical" ...
+ $ X4       : chr  "logical-mathematical" "visual-spatial" "intrapersonal" "verbal-lingusitic" ...
+ $ X5       : chr  "bodily-kinesthetic" "logical-mathematical" "interpersonal" "intrapersonal" ...
+ $ X6       : chr  "verbal-lingusitic" "bodily-kinesthetic" "naturalistic" "logical-mathematical" ...
+ $ X7       : chr  "musical" "naturalistic" "bodily-kinesthetic" "naturalistic" ...
+ $ X8       : chr  "naturalistic" "musical" "musical" "visual-spatial" ...
+# join()함수가 원활하게 작동하도록 "ID"이름과 1:8을 변수명으로 지정
+R > dimnames(MI.sort.df)[[2]]<-c("ID",1:8)
+# join()함수 사용 준비 완료
+R > str(MI.sort.df)
+'data.frame':	64 obs. of  9 variables:
+ $ ID: num  20122150 20132229 20112944 20102203 20143167 ...
+ $ 1 : chr  "intrapersonal" "interpersonal" "logical-mathematical" "interpersonal" ...
+ $ 2 : chr  "visual-spatial" "verbal-lingusitic" "visual-spatial" "bodily-kinesthetic" ...
+ $ 3 : chr  "interpersonal" "intrapersonal" "verbal-lingusitic" "musical" ...
+ $ 4 : chr  "logical-mathematical" "visual-spatial" "intrapersonal" "verbal-lingusitic" ...
+ $ 5 : chr  "bodily-kinesthetic" "logical-mathematical" "interpersonal" "intrapersonal" ...
+ $ 6 : chr  "verbal-lingusitic" "bodily-kinesthetic" "naturalistic" "logical-mathematical" ...
+ $ 7 : chr  "musical" "naturalistic" "bodily-kinesthetic" "naturalistic" ...
+ $ 8 : chr  "naturalistic" "musical" "musical" "visual-spatial" ...
+## class.roll 의 학번과 이름, MI.sort.df를 join() 함수로 결합.
+R > MI.sort.full<-join(class.roll[,1:2],MI.sort.df,by="ID")
+R > MI.sort.full
+         ID               name                    1                    2                    3                    4                    5                    6                    7                    8
+1  20128009 SARUUL_SHIJIRNARAN   bodily-kinesthetic logical-mathematical        intrapersonal         naturalistic              musical       visual-spatial    verbal-lingusitic        interpersonal
+2  20091701             고경찬        interpersonal        intrapersonal    verbal-lingusitic       visual-spatial         naturalistic logical-mathematical   bodily-kinesthetic              musical
+3  20142505             고현우        intrapersonal    verbal-lingusitic        interpersonal   bodily-kinesthetic logical-mathematical         naturalistic       visual-spatial              musical
+4  20102806             권상훈   bodily-kinesthetic        interpersonal       visual-spatial        intrapersonal         naturalistic logical-mathematical    verbal-lingusitic              musical
+5  20142508             권소연        interpersonal              musical    verbal-lingusitic        intrapersonal logical-mathematical   bodily-kinesthetic         naturalistic       visual-spatial
+6  20132808             권소현   bodily-kinesthetic        interpersonal         naturalistic        intrapersonal    verbal-lingusitic logical-mathematical       visual-spatial              musical
+7  20102203             권영민        interpersonal   bodily-kinesthetic              musical    verbal-lingusitic        intrapersonal logical-mathematical         naturalistic       visual-spatial
+8  20102808             권준현    verbal-lingusitic        interpersonal        intrapersonal       visual-spatial   bodily-kinesthetic         naturalistic              musical logical-mathematical
+9  20113103             김경선        interpersonal              musical   bodily-kinesthetic        intrapersonal    verbal-lingusitic logical-mathematical       visual-spatial         naturalistic
+10 20113105             김경수        interpersonal        intrapersonal              musical    verbal-lingusitic       visual-spatial   bodily-kinesthetic         naturalistic logical-mathematical
+11 20134308             김기욱                 <NA>                 <NA>                 <NA>                 <NA>                 <NA>                 <NA>                 <NA>                 <NA>
+12 20143607             김단비        interpersonal       visual-spatial    verbal-lingusitic logical-mathematical        intrapersonal   bodily-kinesthetic              musical         naturalistic
+13 20102829             김영대        interpersonal        intrapersonal   bodily-kinesthetic logical-mathematical    verbal-lingusitic         naturalistic       visual-spatial              musical
+14 20132527             김은서              musical    verbal-lingusitic        interpersonal        intrapersonal       visual-spatial   bodily-kinesthetic logical-mathematical         naturalistic
+15 20103306             김정재 logical-mathematical              musical    verbal-lingusitic        interpersonal        intrapersonal   bodily-kinesthetic       visual-spatial         naturalistic
+16 20142535             김정훈        intrapersonal        interpersonal    verbal-lingusitic       visual-spatial logical-mathematical         naturalistic              musical   bodily-kinesthetic
+17 20123120             김종윤              musical       visual-spatial        interpersonal logical-mathematical   bodily-kinesthetic        intrapersonal         naturalistic    verbal-lingusitic
+18 20142538             김현우        interpersonal    verbal-lingusitic        intrapersonal   bodily-kinesthetic       visual-spatial logical-mathematical         naturalistic              musical
+19 20143121             나지현    verbal-lingusitic       visual-spatial              musical        interpersonal logical-mathematical   bodily-kinesthetic        intrapersonal         naturalistic
+20 20131709             류호정        interpersonal       visual-spatial logical-mathematical        intrapersonal    verbal-lingusitic              musical   bodily-kinesthetic         naturalistic
+21 20114123             문유진                 <NA>                 <NA>                 <NA>                 <NA>                 <NA>                 <NA>                 <NA>                 <NA>
+22 20142551             박규현              musical    verbal-lingusitic        interpersonal logical-mathematical        intrapersonal       visual-spatial   bodily-kinesthetic         naturalistic
+23 20092850             박재형    verbal-lingusitic        intrapersonal logical-mathematical         naturalistic       visual-spatial        interpersonal   bodily-kinesthetic              musical
+24 20112567             박지수                 <NA>                 <NA>                 <NA>                 <NA>                 <NA>                 <NA>                 <NA>                 <NA>
+25 20113123             박태선         naturalistic        intrapersonal        interpersonal    verbal-lingusitic       visual-spatial              musical   bodily-kinesthetic logical-mathematical
+26 20143217             박혜린                 <NA>                 <NA>                 <NA>                 <NA>                 <NA>                 <NA>                 <NA>                 <NA>
+27 20143131             배수아    verbal-lingusitic        intrapersonal        interpersonal logical-mathematical              musical   bodily-kinesthetic         naturalistic       visual-spatial
+28 20122216             서문석        interpersonal        intrapersonal   bodily-kinesthetic    verbal-lingusitic logical-mathematical       visual-spatial              musical         naturalistic
+29 20143134             서지우    verbal-lingusitic              musical        interpersonal       visual-spatial logical-mathematical        intrapersonal   bodily-kinesthetic         naturalistic
+30 20121123             손선영    verbal-lingusitic        interpersonal        intrapersonal logical-mathematical       visual-spatial              musical         naturalistic   bodily-kinesthetic
+31 20112579             손솔아       visual-spatial        intrapersonal    verbal-lingusitic   bodily-kinesthetic logical-mathematical        interpersonal         naturalistic              musical
+32 20144326             손희찬                 <NA>                 <NA>                 <NA>                 <NA>                 <NA>                 <NA>                 <NA>                 <NA>
+33 20122121             송슬기              musical    verbal-lingusitic        intrapersonal logical-mathematical        interpersonal       visual-spatial   bodily-kinesthetic         naturalistic
+34 20122218             신예솔        interpersonal        intrapersonal       visual-spatial logical-mathematical    verbal-lingusitic         naturalistic   bodily-kinesthetic              musical
+35 20103317             신지용   bodily-kinesthetic        interpersonal logical-mathematical       visual-spatial        intrapersonal              musical         naturalistic    verbal-lingusitic
+36 20103319             양성훈 logical-mathematical        interpersonal        intrapersonal              musical       visual-spatial    verbal-lingusitic         naturalistic   bodily-kinesthetic
+37 20131121             양인영        interpersonal    verbal-lingusitic        intrapersonal              musical logical-mathematical         naturalistic       visual-spatial   bodily-kinesthetic
+38 20134339             엄무용 logical-mathematical        intrapersonal   bodily-kinesthetic        interpersonal    verbal-lingusitic              musical       visual-spatial         naturalistic
+39 20143221             엄슬기        interpersonal        intrapersonal    verbal-lingusitic logical-mathematical       visual-spatial   bodily-kinesthetic              musical         naturalistic
+40 20144337             연초롱              musical        interpersonal    verbal-lingusitic        intrapersonal   bodily-kinesthetic logical-mathematical       visual-spatial         naturalistic
+41 20144338             오현민   bodily-kinesthetic        interpersonal logical-mathematical        intrapersonal    verbal-lingusitic       visual-spatial         naturalistic              musical
+42 20144340             유민서              musical        interpersonal   bodily-kinesthetic       visual-spatial        intrapersonal logical-mathematical    verbal-lingusitic         naturalistic
+43 20132582             유수연        intrapersonal        interpersonal logical-mathematical              musical   bodily-kinesthetic       visual-spatial    verbal-lingusitic         naturalistic
+44 20131123             육소연        interpersonal    verbal-lingusitic        intrapersonal         naturalistic   bodily-kinesthetic              musical logical-mathematical       visual-spatial
+45 20101722               이건              musical       visual-spatial    verbal-lingusitic         naturalistic        interpersonal        intrapersonal logical-mathematical   bodily-kinesthetic
+46 20132229             이미나        interpersonal    verbal-lingusitic        intrapersonal       visual-spatial logical-mathematical   bodily-kinesthetic         naturalistic              musical
+47 20102903             이상현   bodily-kinesthetic        intrapersonal    verbal-lingusitic        interpersonal       visual-spatial              musical         naturalistic logical-mathematical
+48 20102908             이승민        intrapersonal logical-mathematical   bodily-kinesthetic        interpersonal    verbal-lingusitic       visual-spatial         naturalistic              musical
+49 20144347             이정환   bodily-kinesthetic        interpersonal logical-mathematical        intrapersonal    verbal-lingusitic       visual-spatial         naturalistic              musical
+50 20121133             이지영        interpersonal       visual-spatial    verbal-lingusitic logical-mathematical        intrapersonal              musical   bodily-kinesthetic         naturalistic
+51 20142897             이지원        interpersonal        intrapersonal logical-mathematical   bodily-kinesthetic    verbal-lingusitic              musical       visual-spatial         naturalistic
+52 20122609             이지현        intrapersonal              musical       visual-spatial   bodily-kinesthetic logical-mathematical    verbal-lingusitic        interpersonal         naturalistic
+53 20113151             이창명        interpersonal        intrapersonal    verbal-lingusitic              musical logical-mathematical   bodily-kinesthetic       visual-spatial         naturalistic
+54 20131726             이혜진    verbal-lingusitic        interpersonal       visual-spatial        intrapersonal         naturalistic logical-mathematical   bodily-kinesthetic              musical
+55 20081519             임성호        interpersonal        intrapersonal    verbal-lingusitic         naturalistic   bodily-kinesthetic logical-mathematical              musical       visual-spatial
+56 20132613             장형우              musical    verbal-lingusitic   bodily-kinesthetic        interpersonal        intrapersonal         naturalistic logical-mathematical       visual-spatial
+57 20143229             전예빈              musical        interpersonal        intrapersonal   bodily-kinesthetic logical-mathematical       visual-spatial         naturalistic    verbal-lingusitic
+58 20143230             전재승   bodily-kinesthetic        interpersonal logical-mathematical        intrapersonal       visual-spatial              musical    verbal-lingusitic         naturalistic
+59 20112633             정계환        interpersonal        intrapersonal       visual-spatial logical-mathematical   bodily-kinesthetic         naturalistic    verbal-lingusitic              musical
+60 20126282             정성환 logical-mathematical         naturalistic       visual-spatial              musical        intrapersonal    verbal-lingusitic        interpersonal   bodily-kinesthetic
+61 20111239             정예리              musical        interpersonal        intrapersonal   bodily-kinesthetic logical-mathematical       visual-spatial    verbal-lingusitic         naturalistic
+62 20133161             정인교        intrapersonal        interpersonal    verbal-lingusitic logical-mathematical       visual-spatial   bodily-kinesthetic         naturalistic              musical
+63 20132933             조태희                 <NA>                 <NA>                 <NA>                 <NA>                 <NA>                 <NA>                 <NA>                 <NA>
+64 20142236             조혜은   bodily-kinesthetic    verbal-lingusitic       visual-spatial logical-mathematical         naturalistic        interpersonal        intrapersonal              musical
+65 20112944             천기웅 logical-mathematical       visual-spatial    verbal-lingusitic        intrapersonal        interpersonal         naturalistic   bodily-kinesthetic              musical
+66 20132144             한도현                 <NA>                 <NA>                 <NA>                 <NA>                 <NA>                 <NA>                 <NA>                 <NA>
+67 20122150             한유정        intrapersonal       visual-spatial        interpersonal logical-mathematical   bodily-kinesthetic    verbal-lingusitic              musical         naturalistic
+68 20143243             한태연   bodily-kinesthetic              musical       visual-spatial        interpersonal logical-mathematical        intrapersonal    verbal-lingusitic         naturalistic
+69 20143167             허수민   bodily-kinesthetic        intrapersonal       visual-spatial logical-mathematical        interpersonal    verbal-lingusitic         naturalistic              musical
+70 20102952             홍기재        interpersonal        intrapersonal logical-mathematical   bodily-kinesthetic       visual-spatial    verbal-lingusitic         naturalistic              musical
+71 20114157             홍진기        intrapersonal        interpersonal   bodily-kinesthetic    verbal-lingusitic              musical logical-mathematical       visual-spatial         naturalistic
+R > 
+## 상위 세가지 강점지능만 추출
+R > MI.sort.full[,1:5]
+         ID               name                    1                    2                    3
+1  20128009 SARUUL_SHIJIRNARAN   bodily-kinesthetic logical-mathematical        intrapersonal
+2  20091701             고경찬        interpersonal        intrapersonal    verbal-lingusitic
+3  20142505             고현우        intrapersonal    verbal-lingusitic        interpersonal
+4  20102806             권상훈   bodily-kinesthetic        interpersonal       visual-spatial
+5  20142508             권소연        interpersonal              musical    verbal-lingusitic
+6  20132808             권소현   bodily-kinesthetic        interpersonal         naturalistic
+7  20102203             권영민        interpersonal   bodily-kinesthetic              musical
+8  20102808             권준현    verbal-lingusitic        interpersonal        intrapersonal
+9  20113103             김경선        interpersonal              musical   bodily-kinesthetic
+10 20113105             김경수        interpersonal        intrapersonal              musical
+11 20134308             김기욱                 <NA>                 <NA>                 <NA>
+12 20143607             김단비        interpersonal       visual-spatial    verbal-lingusitic
+13 20102829             김영대        interpersonal        intrapersonal   bodily-kinesthetic
+14 20132527             김은서              musical    verbal-lingusitic        interpersonal
+15 20103306             김정재 logical-mathematical              musical    verbal-lingusitic
+16 20142535             김정훈        intrapersonal        interpersonal    verbal-lingusitic
+17 20123120             김종윤              musical       visual-spatial        interpersonal
+18 20142538             김현우        interpersonal    verbal-lingusitic        intrapersonal
+19 20143121             나지현    verbal-lingusitic       visual-spatial              musical
+20 20131709             류호정        interpersonal       visual-spatial logical-mathematical
+21 20114123             문유진                 <NA>                 <NA>                 <NA>
+22 20142551             박규현              musical    verbal-lingusitic        interpersonal
+23 20092850             박재형    verbal-lingusitic        intrapersonal logical-mathematical
+24 20112567             박지수                 <NA>                 <NA>                 <NA>
+25 20113123             박태선         naturalistic        intrapersonal        interpersonal
+26 20143217             박혜린                 <NA>                 <NA>                 <NA>
+27 20143131             배수아    verbal-lingusitic        intrapersonal        interpersonal
+28 20122216             서문석        interpersonal        intrapersonal   bodily-kinesthetic
+29 20143134             서지우    verbal-lingusitic              musical        interpersonal
+30 20121123             손선영    verbal-lingusitic        interpersonal        intrapersonal
+31 20112579             손솔아       visual-spatial        intrapersonal    verbal-lingusitic
+32 20144326             손희찬                 <NA>                 <NA>                 <NA>
+33 20122121             송슬기              musical    verbal-lingusitic        intrapersonal
+34 20122218             신예솔        interpersonal        intrapersonal       visual-spatial
+35 20103317             신지용   bodily-kinesthetic        interpersonal logical-mathematical
+36 20103319             양성훈 logical-mathematical        interpersonal        intrapersonal
+37 20131121             양인영        interpersonal    verbal-lingusitic        intrapersonal
+38 20134339             엄무용 logical-mathematical        intrapersonal   bodily-kinesthetic
+39 20143221             엄슬기        interpersonal        intrapersonal    verbal-lingusitic
+40 20144337             연초롱              musical        interpersonal    verbal-lingusitic
+41 20144338             오현민   bodily-kinesthetic        interpersonal logical-mathematical
+42 20144340             유민서              musical        interpersonal   bodily-kinesthetic
+43 20132582             유수연        intrapersonal        interpersonal logical-mathematical
+44 20131123             육소연        interpersonal    verbal-lingusitic        intrapersonal
+45 20101722               이건              musical       visual-spatial    verbal-lingusitic
+46 20132229             이미나        interpersonal    verbal-lingusitic        intrapersonal
+47 20102903             이상현   bodily-kinesthetic        intrapersonal    verbal-lingusitic
+48 20102908             이승민        intrapersonal logical-mathematical   bodily-kinesthetic
+49 20144347             이정환   bodily-kinesthetic        interpersonal logical-mathematical
+50 20121133             이지영        interpersonal       visual-spatial    verbal-lingusitic
+51 20142897             이지원        interpersonal        intrapersonal logical-mathematical
+52 20122609             이지현        intrapersonal              musical       visual-spatial
+53 20113151             이창명        interpersonal        intrapersonal    verbal-lingusitic
+54 20131726             이혜진    verbal-lingusitic        interpersonal       visual-spatial
+55 20081519             임성호        interpersonal        intrapersonal    verbal-lingusitic
+56 20132613             장형우              musical    verbal-lingusitic   bodily-kinesthetic
+57 20143229             전예빈              musical        interpersonal        intrapersonal
+58 20143230             전재승   bodily-kinesthetic        interpersonal logical-mathematical
+59 20112633             정계환        interpersonal        intrapersonal       visual-spatial
+60 20126282             정성환 logical-mathematical         naturalistic       visual-spatial
+61 20111239             정예리              musical        interpersonal        intrapersonal
+62 20133161             정인교        intrapersonal        interpersonal    verbal-lingusitic
+63 20132933             조태희                 <NA>                 <NA>                 <NA>
+64 20142236             조혜은   bodily-kinesthetic    verbal-lingusitic       visual-spatial
+65 20112944             천기웅 logical-mathematical       visual-spatial    verbal-lingusitic
+66 20132144             한도현                 <NA>                 <NA>                 <NA>
+67 20122150             한유정        intrapersonal       visual-spatial        interpersonal
+68 20143243             한태연   bodily-kinesthetic              musical       visual-spatial
+69 20143167             허수민   bodily-kinesthetic        intrapersonal       visual-spatial
+70 20102952             홍기재        interpersonal        intrapersonal logical-mathematical
+71 20114157             홍진기        intrapersonal        interpersonal   bodily-kinesthetic
+R > 

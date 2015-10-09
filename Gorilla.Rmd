@@ -1,0 +1,40 @@
+---
+title: "Invisible Gorilla"
+author: "coop711"
+date: "2015년 6월 1일"
+output: html_document
+---
+
+Data Read-in
+------------
+
+```{r}
+load("gorilla.rda")
+str(gorilla)
+```
+
+계산 편의를 위하여 `gorilla`를 검색 목록에 등록하고 소숫점 이하 자릿수 조정.
+
+```{r}
+attach(gorilla)
+options(digits=2)
+```
+
+Selective Attention Test에서 패스 성공횟수 카운트와 고릴라 인지 여부
+
+```{r}
+addmargins(table("고릴라?"=satQ_2, "패스성공횟수"=satQ_1.2))
+prop.table(table("고릴라?"=satQ_2, "패스성공횟수"=satQ_1.2),2)
+```
+
+Monkey Business Illusion에서 패스 성공횟수 카운트와 고릴라 인지 여부, 커튼색깔 변화 인지 여부, 선수퇴장 인지 여부.
+
+```{r}
+addmargins(table("고릴라?"=mbiQ_2, "패스성공횟수"=mbiQ_1.2))
+prop.table(table("고릴라?"=mbiQ_2, "패스성공횟수"=mbiQ_1.2),2)
+addmargins(table("커튼 색깔이?"=mbiQ_3, "패스성공횟수"=mbiQ_1.2))
+prop.table(table("커튼 색깔이?"=mbiQ_3, "패스성공횟수"=mbiQ_1.2),2)
+addmargins(table("선수 퇴장?"=mbiQ_4, "패스성공횟수"=mbiQ_1.2))
+prop.table(table("선수 퇴장?"=mbiQ_4, "패스성공횟수"=mbiQ_1.2),2)
+```
+

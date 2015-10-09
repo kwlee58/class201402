@@ -1,0 +1,58 @@
+---
+title: "Chocolate Experiment"
+author: "coop711"
+date: "2015년 6월 1일"
+output: html_document
+---
+
+Data
+----
+
+관련 자료가 들어 있는 `rda`파일들 읽어들이기
+
+```{r}
+load("gorilla.rda")
+load("east_west.rda")
+load("class_roll_1402.rda")
+ls()
+```
+
+자료를 합치기 위해 `plyr` 패키지를 검색 목록에
+
+```{r}
+library(plyr)
+```
+
+동과 서 자료에서 결석생들을 채워넣기 위하여 `join()` 적용.
+
+```{r}
+east.west.full<-join(class.roll, east.west.2, by="ID")
+str(east.west.full)
+```
+
+이름 변수가 중복되었으므로 하나 삭제
+
+```{r}
+east.west.full<-east.west.full[,-3]
+```
+
+이를 `gorilla` 자료와 합침.
+
+```{r}
+ew.gorilla.full<-join(east.west.full,gorilla, by="ID")
+str(ew.gorilla.full)
+attach(ew.gorilla.full)
+options(digits=2)
+```
+
+성별 차이, 학번별 차이를 파악하기 위하여 `tapply()` 활용
+
+```{r}
+table("몇 개나 나눠줄래요?"=chocolate, "성별"=sex)
+tapply(chocolate, sex, mean, na.rm=TRUE)
+tapply(chocolate, sex, median, na.rm=TRUE)
+tapply(chocolate, year, mean, na.rm=TRUE)
+tapply(chocolate, year.2, mean, na.rm=TRUE)
+tapply(chocolate, list(year, sex), mean, na.rm=TRUE)
+```
+

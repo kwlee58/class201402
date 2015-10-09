@@ -1,0 +1,20 @@
+MI1402.2<-read.table("MI1402_2.txt",header=T,sep="")
+music.score.2<-MI1402.2$Q_1+MI1402.2$Q_9+MI1402.2$Q_17+MI1402.2$Q_25+MI1402.2$Q_33+MI1402.2$Q_41+MI1402.2$Q_49
+body.score.2<-MI1402.2$Q_2+MI1402.2$Q_10+MI1402.2$Q_18+MI1402.2$Q_26+MI1402.2$Q_34+MI1402.2$Q_42+MI1402.2$Q_50
+logic.score.2<-MI1402.2$Q_3+MI1402.2$Q_11+MI1402.2$Q_19+MI1402.2$Q_27+MI1402.2$Q_35+MI1402.2$Q_43+MI1402.2$Q_51
+spatial.score.2<-MI1402.2$Q_4+MI1402.2$Q_12+MI1402.2$Q_20+MI1402.2$Q_28+MI1402.2$Q_36+MI1402.2$Q_44+MI1402.2$Q_52
+verbal.score.2<-MI1402.2$Q_5+MI1402.2$Q_13+MI1402.2$Q_21+MI1402.2$Q_29+MI1402.2$Q_37+MI1402.2$Q_45+MI1402.2$Q_53
+people.score.2<-MI1402.2$Q_5+MI1402.2$Q_13+MI1402.2$Q_21+MI1402.2$Q_29+MI1402.2$Q_37+MI1402.2$Q_45+MI1402.2$Q_53
+people.score.2<-MI1402.2$Q_6+MI1402.2$Q_14+MI1402.2$Q_22+MI1402.2$Q_30+MI1402.2$Q_38+MI1402.2$Q_46+MI1402.2$Q_54
+self.score.2<-MI1402.2$Q_7+MI1402.2$Q_15+MI1402.2$Q_23+MI1402.2$Q_31+MI1402.2$Q_39+MI1402.2$Q_47+MI1402.2$Q_55
+nature.score.2<-MI1402.2$Q_8+MI1402.2$Q_16+MI1402.2$Q_24+MI1402.2$Q_32+MI1402.2$Q_40+MI1402.2$Q_48+MI1402.2$Q_56
+MI.score.2<-data.frame(MI1402.2$ID, music.score.2,body.score.2,logic.score.2,spatial.score.2,verbal.score.2,people.score.2,self.score.2,nature.score.2)
+#MI.names<-c("musical","bodily-kinesthetic","logical-nathematical","visual-spatial","verbal-lingusitic","interpersonal","intrapersonal","naturalistic")
+dimnames(MI.score.2)[[2]]<-c("ID",MI.names)
+MI.order.2<-apply(MI.score.2[,-1],1,order,decreasing=TRUE)
+MI.sort.2<-matrix(MI.names.kr[MI.order],ncol=8,byrow=T,dimnames=list(MI.score.2$ID,1:8))
+MI.sort.2[,1:3]
+MI.sort.2.df<-data.frame(MI1402.2$ID,MI.sort.2,row.names=1:64)
+dimnames(MI.sort.2.df)[[2]]<-c("ID",1:8)
+MI.sort.2.full<-join(class.roll[,1:2],MI.sort.2.df,by="ID")
+MI.sort.2.full[,1:5]

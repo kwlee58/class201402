@@ -1,0 +1,46 @@
+## 자료 읽어 들이기
+R > monty<-read.table("Monty_Hall.txt",header=F,sep="",stringsAsFactors=T)
+
+## 자료의 구조가 뒤집혀 있어서 transpose. 이에 따라 monty 는 매트릭스로 바뀜.
+R > monty<-t(monty)
+
+## matrix class 임을 확인.
+R > class(monty)
+[1] "matrix"
+
+## factor 로 인식되고 있는 학번을 integer 로 전환.
+R > monty.ID<-as.integer(monty[,1])
+
+## 여전히 factor인 첫번째 열 대신에 integer 로 바뀐 학번을 넣어 data.frame 으로 전환. 
+## V1, ..., V65로 되어 있을 row.names 를 NULL로 설정.
+R > monty<-data.frame(monty.ID,monty[,-1],row.names=NULL)
+
+## 적절한 열 이름 설정
+R > monty.names<-c("ID","Monty","Wason1","Wason2","AB1","AB2","ChoiceA1","ChoiceA2","ChoiceB1","ChoiceB2",
++ "Frame1","Frame2","Policy1","Policy2","Default1","Default2","Money1","Money2","Account1","Account2")
+R >
+
+## 열 이름 교체
+R > dimnames(monty)[[2]]<-monty.names
+
+## 도수분포표로 요약.
+R > apply(monty[,2:10],2,table)
+     Monty Wason1 Wason2 AB1 AB2 ChoiceA1 ChoiceA2 ChoiceB1 ChoiceB2
+[1,]    26      5     24  38  33       43       16       19       23
+[2,]    39     60     41  23  29       16       43       40       36
+ > apply(monty[,11:20],2,table)
+     Frame1 Frame2 Policy1 Policy2 Default1 Default2 Money1 Money2 Account1 Account2
+[1,]     31     15      32      25       38       27     40     27       50       39
+[2,]     27     44      26      33       27       38     18     31       13       24
+
+## 비율로 요약
+R > round(prop.table(apply(monty[,2:10],2,table),margin=2),digits=2)
+     Monty Wason1 Wason2  AB1  AB2 ChoiceA1 ChoiceA2 ChoiceB1 ChoiceB2
+[1,]   0.4   0.08   0.37 0.62 0.53     0.73     0.27     0.32     0.39
+[2,]   0.6   0.92   0.63 0.38 0.47     0.27     0.73     0.68     0.61
+R > round(prop.table(apply(monty[,11:20],2,table),margin=2),digits=2)
+     Frame1 Frame2 Policy1 Policy2 Default1 Default2 Money1 Money2 Account1 Account2
+[1,]   0.53   0.25    0.55    0.43     0.58     0.42   0.69   0.47     0.79     0.62
+[2,]   0.47   0.75    0.45    0.57     0.42     0.58   0.31   0.53     0.21     0.38
+R > 
+

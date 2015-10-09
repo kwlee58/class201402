@@ -1,0 +1,184 @@
+mean(rate.grdp_yg)
+gdp
+rate.gdp<-c(gdp[2]/gdp[1],gdp[3]/gdp[2],gdp[4]/gdp[3],gdp[3]/gdp[2],gdp[2]/gdp[1])
+rate.gdp<-c(gdp[2]/gdp[1],gdp[3]/gdp[2],gdp[4]/gdp[3],gdp[5]/gdp[4])
+rate.gdp
+mean(rate.gdp)
+a(save="yes")
+grdp_ij<-c(813,859,906,948,1001)
+rate.grdp_ij<-c(grdp_ij[2]/grdp_ij[1],grdp_ij[3]/grdp_ij[2],grdp_ij[4]/
+grdp_ij[3],grdp_ij[5]/grdp_ij[4])
+rate.grdp_ij
+mean(rate.grdp_ij)
+1001/30218
+grdp_yy<-c(665,661,699,755,730)
+rate.grdp_yy<-c(grdp_yy[2]/grdp_yy[1],grdp_yy[3]/grdp_yy[2],grdp_[4]/
+rate.grdp_yy<-c(grdp_yy[2]/grdp_yy[1],grdp_yy[3]/grdp_yy[2],grdp_yy[4]/
+grdp_yy[3],grdp_yy[5]/grdp_yy[4])
+rate.grdp_yy
+mean(rate.grdp_yy)
+755/28829
+730/30328
+699/27349
+661/26311
+665/25989
+23856/40236
+23856/24655
+9300/9400
+10.2/10.3
+25545//26269
+25545/26269
+17.0/14.5
+c(14.7/14.5,15.4/14.7,16.4/15.4,17.0/16.4)
+mean(c(14.7/14.5,15.4/14.7,16.4/15.4,17.0/16.4))
+c(3.6/3.5,4.7/3.6,5.0/4.7,2.4/5.0)
+c(5.1/5.1,6.3/5.1,7.1/6.3,6.8/7.1)
+c(1.5/1.6,1.6/1.5,2.1/1.6,2.4/2.1)
+mean(c(1.5/1.6,1.6/1.5,2.1/1.6,2.4/2.1))
+mean(c(5.1/5.1,6.3/5.1,7.1/6.3,6.8/7.1))
+mean(c(3.6/3.5,4.7/3.6,5.0/4.7,2.4/5.0))
+mean(c(3.6/3.5,4.7/3.6,5.0/4.7,2.4/5.0))-1
+mean(c(3.6/3.5,4.7/3.6,5.0/4.7,4.4/5.0))-1
+q(save="yes")
+x
+y
+x<-c(0.0,0.5,0.9,0.99,1.0)
+y<-c(0.0,0.3,0.75,0.93,1.0)
+polygon(x=c(x,rev(x),y=c(x,rev(y)),density=15)
+)
+polygon(x=c(x,rev(x)),y=c(x,rev(y)),density=15)
+plot(x,y,type="l")
+abline(v=x,lty=2)
+abline(h=c(0,1),lty=2)
+polygon(x=c(x,rev(x)),y=c(rep(0,length(x)),rev(y)),density=15,angle=135)
+abline(a=1,b=0,lty=1)
+?abline
+gini<-x[2]y[2]+(x[3]-x[2])*(y[2]+y[3])+(x[4]-x[3])*(y[3]+y[4])+(x[5]-x[4])*(y[4]+y[5])
+gini<-x[2]*y[2]+(x[3]-x[2])*(y[2]+y[3])+(x[4]-x[3])*(y[3]+y[4])+(x[5]-x[4])*(y[4]+y[5])
+s*2
+p<-p+abline(a=o,b=1,lty=1)
+p<-p+abline(a=0,b=1,lty=1)
+p<-p+polygon(x=c(x,rev(x)),y=c(x,rev(y)),density=15,angle=135)
+p<-p+abline(v=x,h=c(0,1),lty=2)
+print(p)
+p<-plot(x,y,type="l",xlab="",ylab="")
+p
+?plot
+plot(x,y,type="l",xlab="",ylab="")
+abline(v=x,h=c(0,1),lty=2)
+abline(a=0,b=1,lty=1)
+polygon(x=c(x,rev(x)),y=c(x,rev(y)),density=15,angle=135)
+s
+fix(gini)
+gini(x,y)
+x.euro2010<-x
+y.euro2010<-c(0.0,0.25,0.65,0.90,1.0)
+gini(x.euro2010,y.euro2010)
+x.usa2010<-x
+y.usa2010<-c(0.0,0.2,0.5,0.8,1.0)
+gini(x.usa2010,y.usa2010)
+x.usa2030<-x
+y.usa2030<-c(0.0,0.15,0.4,0.75,1.0)
+gini(x.usa2030,y.usa2030)
+lines(x.euro2010,y.euro2010,col="blue")
+lines(x.usa2010,y.usa2010,col="red")
+lines(x.usa2030,y.usa2030,col="grey")
+?legend
+legend("topright",legend=c("Low","Medium","High","Very High"),col=c("black","blue","red","grey"))
+legend("topleft",legend=c("Low","Medium","High","Very High"),lty=1,col=c("black","blue","red","grey"))
+legend("left",legend=c("Low","Medium","High","Very High"),lty=1,col=c("black","blue","red","grey"))
+legend(c(0.1,0.9),legend=c("Low","Medium","High","Very High"),lty=1,col=c("black","blue","red","grey"))
+legend(x=0.1,y=0.9,legend=c("Low","Medium","High","Very High"),lty=1,col=c("black","blue","red","grey"))
+legend(x=0.1,y=0.9,legend=c("Low","Medium","High","Very High"),lty=1,col=c("black","blue","red","grey"),title="Intensity of Inequality")
+legend.gini<-c("Low(Scandinavia, 1970-80)","Medium(Europe 2010)", "High(US 2010, Europe 1910)","Very High(US 2030)")
+legend(x=0.1,y=0.9,legend=legend.gini,lty=1,col=c("black","blue","red","grey"),title="Income Inequality")
+title(main="Larentz Curve",xlab="Cumulative share of people from lowest to highest income",ylab="Cumulative share of income earned")
+title(main="Laurenz Curve",xlab="Cumulative share of people from lowest to highest income",ylab="Cumulative share of income earned")
+legend(x=0.05,y=0.9,legend=legend.gini,lty=1,col=c("black","blue","red","grey"),title="Income Inequality")
+quartz(dpi=72,width=6,height=6)
+legend(x=0.1,y=0.9,legend=c("Low","Medium","High","Very High"),lty=1,col=c("black","blue","red","grey"),title="Income Inequality")
+legend(x=0.05,y=0.95,legend=c("Low","Medium","High","Very High"),lty=1,col=c("black","blue","red","grey"),title="Income Inequality")
+save(file="./Documents/통계분석사례연구/R.WD/inequality/inequality.rda",list=ls())
+gini
+?par
+source("./Documents/통계분석사례연구/R.WD/lifetable/gini.r")
+axis(side=1,at=c(0.5,0.9,0.99),labels=paste(c(0.5,0.9,0.99)))
+axis(side=1,at=c(0.0,0.5,0.9,0.99),labels=paste(c(0.0,0.5,0.9,0.99)))
+axis(side=1,at=c(0.0,0.5,0.9,0.99,1.0),labels=paste(c(0.0,0.5,0.9,0.99,1.0)))
+axis(side=1,at=c(0.0,0.5,0.9,0.99,1.0),labels=c("0.0","0.5","0.9","0.99","1.0"))
+png(file="income_inequality.png",width=480,height=480)
+png(file="./Documents/통계분석사례연구/R.WD/inequality/income_inequality2.png",width=480,height=480)
+source("./Documents/통계분석사례연구/R.WD/inequality/gini.r")
+dev.off()
+getwd()
+load(".RData")
+load("/Users/coop2711/Dropbox/works/Case_studies_in_stat/R.WD/inequality/Wilkinson/inequality_vs_social_problems.rda")
+rm(list=ls())
+q("yes")
+pnorm(-1/7)
+0.5-pnorm(-1/7)
+pt(2.5,4)
+pt(-1.33, 9)
+pt(-3.68, 9)
+pt(-3.68, 9)*2
+pt(-2.148, 14)*2
+?pt
+qt(c(0.01,0.05),c(14,15))
+qt(c(0.01,0.05),14)
+qt(c(0.01,0.05),15)
+qt(c(0.99,0.95),15)
+qt(c(0.99,0.95),14)
+16*70
+16*70/8
+setwd("~/Dropbox/works/Statistics/R.WD/class2014/")
+read.table("class_recordsv2.txt",header=F,stringsAsFactors=T)
+class.records<-read.table("class_recordsv2.txt",header=F,stringsAsFactors=T)
+str(class.records)
+table(class.records[1,-1])
+str(class.records[1,-1])
+str(as.vector(class.records[1,-1]))
+table(as.vector(class.records[1,-1]))
+?table
+table(class.records[,2]))
+table(class.records[,2])
+table(class.records[,3])
+table(class.records[,4])
+table(as.factor(class.records[1,-1]))
+?collapse
+??collapse
+install.packages("nlme")
+library(nlme)
+collapse(class.records[1,-1])
+collapse(class.records[1,-1],table)
+58.7*0.4
+class.records.2<-read.table("class_recordsv2.txt",header=F)
+summary(class.records[1,-1])
+summary(class.records.2[1,-1])
+summary(as.vector(class.records.2[1,-1]))
+?as.matrix
+as.matrxi(class.records[,-1])
+as.matrix(class.records[,-1])
+summary(as.matrix(class.records.2[,-1]))
+table(as.vector(class.records.2[1,-1]))
+table(as.matrix(class.records.2[1,-1]))
+ls()
+save(file="class1227.rda",list=ls())
+q("no")
+load("/Users/coop2711/Dropbox/Works/Class/Statistics/R.WD/class2014/bfi_MI150527.rda")#
+MI#
+bfi#
+ls()#
+save(file="BFI_MI_1402.rda", list=c("bfi", "MI", "class.roll"))#
+BFI<-bfi#
+save(file="BFI_MI_1402.rda", list=c("BFI", "MI", "class.roll"))#
+#
+load("/Users/coop2711/Dropbox/Works/Class/Statistics/R.WD/class2014/class1227.rda")#
+ㅣㄴ()#
+ls()#
+class.records#
+class.records.2#
+#
+load("/Users/coop2711/Dropbox/Works/Class/Statistics/R.WD/class2014/class_records1501.rda")#
+
+load("/Users/coop2711/Dropbox/Works/Class/Statistics/R.WD/class2014/grades_1501.rda")#
+

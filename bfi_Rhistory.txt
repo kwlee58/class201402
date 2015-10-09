@@ -1,0 +1,340 @@
+## 데이터 읽어들이기
+R > bfi1402<-read.table("BF201402.txt",header=TRUE,sep="")
+## 데이터 확인
+R > bfi1402
+         ID Q_1 Q_2 Q_3 Q_4 Q_5 Q_6 Q_7 Q_8 Q_9 Q_10 Q_11 Q_12
+1  20134308   3   3   2   3   2   4   3   3   4    4    2    3
+2  20132229   2   4   2   2   4   2   5   5   2    4    3    5
+3  20102203   1   2   2   3   4   4   5   4   3    5    1    4
+4  20131726   3   2   2   3   4   4   4   4   4    4    2    4
+5        NA   4   4   3   2   3   3   2   2   4    2    4    2
+6  20144337   4   4   2   3   3   3   5   5   5    4    2    4
+7  20144340   3   3   2   3   3   3   4   5   5    3    2    4
+8  20103317   3   3   3   3   1   3   5   5   4    3    1    3
+9  20103319   2   2   1   3   1   1   5   5   3    3    1    4
+10 20103306   1   1   1   2   3   2   2   2   4    4    2    3
+11 20143243   3   3   2   2   3   2   4   5   2    4    2    4
+12 20132582   4   4   3   3   2   4   5   2   4    3    2    4
+13 20102808   2   5   5   4   4   2   4   2   4    4    3    2
+14 20091701   3   3   4   1   2   4   5   5   1    2    4    2
+15 20111239   5   3   4   2   3   3   5   2   2    1    1    4
+16 20142535   3   4   2   5   3   5   5   5   4    3    2    3
+17 20132527   4   5   5   1   1   4   4   1   1    3    3    1
+18 20134339   2   5   3   3   5   4   3   2   2    3    3    4
+19 20142508   2   4   3   2   3   4   5   3   1    3    2    5
+20 20142551   2   3   4   4   4   2   5   3   3    4    4    1
+21 20102952   3   1   2   3   3   3   4   3   1    4    4    5
+22 20123120   4   4   4   4   3   4   3   4   5    4    3    4
+23 20126282   4   5   3   4   5   3   4   2   3    5    4    4
+24 20143607   4   4   4   2   3   1   5   4   3    2    2    3
+25 20131123   2   3   5   4   3   4   4   5   5    4    1    4
+26 20113105   2   4   3   2   4   2   4   4   3    4    2    4
+27 20113103   3   3   4   3   4   4   2   4   3    5    3    4
+28 20113151   2   4   3   5   2   4   3   4   5    1    4    4
+29 20113123   2   1   1   4   2   2   3   5   5    4    2    4
+30 20101722   2   3   4   2   4   2   2   1   3    4    4    2
+31 20114157   3   2   2   5   3   3   5   5   4    3    3    4
+32 20131709   3   4   2   4   3   2   5   3   2    4    2    3
+33 20143167   3   4   2   3   3   4   4   3   3    3    3    4
+34 20122150   3   5   3   4   4   4   3   2   3    4    3    5
+35 20144347   4   4   3   3   2   3   4   4   4    2    2    3
+36 20144338   3   2   2   3   3   3   4   3   2    3    2    4
+37 20128009   3   4   3   4   3   4   3   1   4    4    2    4
+38 20122121   4   5   4   3   4   3   4   2   2    5    4    5
+39 20143230   4   5   4   3   4   3   3   1   2    4    3    5
+40 20143134   4   4   4   4   3   4   5   4   2    3    1    4
+41 20121123   2   4   4   3   1   2   4   5   2    3    1    4
+42 20143131   3   4   2   1   2   4   5   2   2    1    2    5
+43 20112633   4   5   4   5   3   5   5   1   4    3    3    5
+44 20143121   4   4   3   2   3   4   4   5   2    3    4    5
+45 20112579   4   4   3   5   4   3   3   4   1    5    4    5
+46 20102908   3   4   2   3   1   4   4   3   4    2    3    2
+47 20102903   5   4   3   4   2   3   3   2   2    3    3    3
+48 20132808   5   5   2   3   2   3   5   5   2    4    2    4
+49 20142538   4   5   3   3   4   5   4   1   2    5    4    5
+50 20131121   3   5   5   3   4   3   4   5   2    5    2    5
+51 20142505   2   4   3   3   3   3   5   4   5    3    2    4
+52 20122218   2   3   2   3   2   3   4   4   3    4    2    3
+53 20133161   4   4   1   4   3   3   5   3   3    3    2    4
+54 20122216   4   4   3   3   3   4   2   3   2    4    3    4
+55 20132613   4   3   5   4   5   4   4   3   4    1    2    2
+56 20143229   5   4   2   4   2   3   5   5   2    2    2    5
+57 20102806   3   2   2   4   3   3   4   4   5    3    2    4
+58 20102829   5   4   2   5   3   5   5   3   4    3    4    5
+59 20081519   4   4   3   3   3   4   4   2   4    3    2    5
+60 20092850   3   4   1   5   1   2   5   5   5    1    3    2
+61 20142236   2   4   3   2   2   3   4   4   4    4    2    4
+62 20142897   5   5   2   5   2   3   2   4   3    3    3    4
+63 20121133   2   4   4   4   3   3   5   4   4    3    2    4
+64 20122609   2   5   3   3   2   2   4   2   1    5    1    4
+65 20143221   4   4   2   4   4   4   4   5   2    4    2    4
+## 외향성 점수 합산    
+R > E.score<-bfi1402$Q_1+bfi1402$Q_6
+## 신경성 점수 합산
+R > N.score<-bfi1402$Q_5+bfi1402$Q_10
+## 성실성 점수 합산
+R > C.score<-bfi1402$Q_4+bfi1402$Q_9
+## 친화성 점수 합산
+R > A.score<-bfi1402$Q_2+bfi1402$Q_7+bfi1402$Q_12
+## 개방성 점수 합산
+R > O.score<-bfi1402$Q_3+bfi1402$Q_8+bfi1402$Q_11
+## ifelse() 함수를 이용한 수준 판정
+R > ifelse(E.score <= 4, "low", ifelse(E.score <=6, "mid-low", ifelse(E.score <=8, "mid-high", "high")))
+ [1] "mid-high" "low"      "mid-low"  "mid-high" "mid-high" "mid-high" "mid-low"  "mid-low"  "low"      "low"      "mid-low"  "mid-high" "low"      "mid-high"
+[15] "mid-high" "mid-high" "mid-high" "mid-low"  "mid-low"  "low"      "mid-low"  "mid-high" "mid-high" "mid-low"  "mid-low"  "low"      "mid-high" "mid-low" 
+[29] "low"      "low"      "mid-low"  "mid-low"  "mid-high" "mid-high" "mid-high" "mid-low"  "mid-high" "mid-high" "mid-high" "mid-high" "low"      "mid-high"
+[43] "high"     "mid-high" "mid-high" "mid-high" "mid-high" "mid-high" "high"     "mid-low"  "mid-low"  "mid-low"  "mid-high" "mid-high" "mid-high" "mid-high"
+[57] "mid-low"  "high"     "mid-high" "mid-low"  "mid-low"  "mid-high" "mid-low"  "low"      "mid-high"
+## 수준 판정 확인
+R > data.frame(E.score,E.level)
+   E.score  E.level
+1        7 mid-high
+2        4      low
+3        5  mid-low
+4        7 mid-high
+5        7 mid-high
+6        7 mid-high
+7        6  mid-low
+8        6  mid-low
+9        3      low
+10       3      low
+11       5  mid-low
+12       8 mid-high
+13       4      low
+14       7 mid-high
+15       8 mid-high
+16       8 mid-high
+17       8 mid-high
+18       6  mid-low
+19       6  mid-low
+20       4      low
+21       6  mid-low
+22       8 mid-high
+23       7 mid-high
+24       5  mid-low
+25       6  mid-low
+26       4      low
+27       7 mid-high
+28       6  mid-low
+29       4      low
+30       4      low
+31       6  mid-low
+32       5  mid-low
+33       7 mid-high
+34       7 mid-high
+35       7 mid-high
+36       6  mid-low
+37       7 mid-high
+38       7 mid-high
+39       7 mid-high
+40       8 mid-high
+41       4      low
+42       7 mid-high
+43       9     high
+44       8 mid-high
+45       7 mid-high
+46       7 mid-high
+47       8 mid-high
+48       8 mid-high
+49       9     high
+50       6  mid-low
+51       5  mid-low
+52       5  mid-low
+53       7 mid-high
+54       8 mid-high
+55       8 mid-high
+56       8 mid-high
+57       6  mid-low
+58      10     high
+59       8 mid-high
+60       5  mid-low
+61       5  mid-low
+62       8 mid-high
+63       5  mid-low
+64       4      low
+65       8 mid-high
+## ifels() 함수를 이용한 수준 판정 진행
+R > E.level<-ifelse(E.score <= 4, "low", ifelse(E.score <=6, "mid-low", ifelse( E.score <=8, "mid-high", "high")))
+R > N.level<-ifelse(N.score <= 4, "low", ifelse(N.score <=6, "mid-low", ifelse(N.score <=8, "mid-high", "high")))
+R > C.level<-ifelse(C.score <= 4, "low", ifelse(C.score <=6, "mid-low", ifelse(C.score <=8, "mid-high", "high")))
+R > A.level<-ifelse(A.score <= 10, "low", ifelse(A.score <=12, "mid-low", ifelse(A.score <=13, "mid-high", "high")))
+R > O.level<-ifelse(A.score <= 8, "low", ifelse(A.score <=10, "mid-low", ifelse(A.score <=12, "mid-high", "high")))
+## bfi 데이터프레임에 합치기
+R > bfi1402$E.score<-E.score
+R > head(bfi1402)
+        ID Q_1 Q_2 Q_3 Q_4 Q_5 Q_6 Q_7 Q_8 Q_9 Q_10 Q_11 Q_12 E.score
+1 20134308   3   3   2   3   2   4   3   3   4    4    2    3       7
+2 20132229   2   4   2   2   4   2   5   5   2    4    3    5       4
+3 20102203   1   2   2   3   4   4   5   4   3    5    1    4       5
+4 20131726   3   2   2   3   4   4   4   4   4    4    2    4       7
+5       NA   4   4   3   2   3   3   2   2   4    2    4    2       7
+6 20144337   4   4   2   3   3   3   5   5   5    4    2    4       7
+R > bfi1402$E.level<-E.level
+R > bfi1402$N.score<-N.score
+R > bfi1402$N.level<-N.level
+R > bfi1402$C.score<-C.score
+R > bfi1402$C.level<-C.level
+R > bfi1402$A.score<-A.score
+R > bfi1402$A.level<-A.level
+R > bfi1402$O.score<-O.score
+R > bfi1402$O.level<-O.level
+## 자료와 판정결과 확인
+R > bfi1402
+         ID Q_1 Q_2 Q_3 Q_4 Q_5 Q_6 Q_7 Q_8 Q_9 Q_10 Q_11 Q_12 E.score  E.level N.score  N.level C.score  C.level A.score  A.level O.score  O.level
+1  20134308   3   3   2   3   2   4   3   3   4    4    2    3       7 mid-high       6  mid-low       7 mid-high       9      low       7  mid-low
+2  20132229   2   4   2   2   4   2   5   5   2    4    3    5       4      low       8 mid-high       4      low      14     high      10     high
+3  20102203   1   2   2   3   4   4   5   4   3    5    1    4       5  mid-low       9     high       6  mid-low      11  mid-low       7 mid-high
+4  20131726   3   2   2   3   4   4   4   4   4    4    2    4       7 mid-high       8 mid-high       7 mid-high      10      low       8  mid-low
+5        NA   4   4   3   2   3   3   2   2   4    2    4    2       7 mid-high       5  mid-low       6  mid-low       8      low       9      low
+6  20144337   4   4   2   3   3   3   5   5   5    4    2    4       7 mid-high       7 mid-high       8 mid-high      13 mid-high       9     high
+7  20144340   3   3   2   3   3   3   4   5   5    3    2    4       6  mid-low       6  mid-low       8 mid-high      11  mid-low       9 mid-high
+8  20103317   3   3   3   3   1   3   5   5   4    3    1    3       6  mid-low       4      low       7 mid-high      11  mid-low       9 mid-high
+9  20103319   2   2   1   3   1   1   5   5   3    3    1    4       3      low       4      low       6  mid-low      11  mid-low       7 mid-high
+10 20103306   1   1   1   2   3   2   2   2   4    4    2    3       3      low       7 mid-high       6  mid-low       6      low       5      low
+11 20143243   3   3   2   2   3   2   4   5   2    4    2    4       5  mid-low       7 mid-high       4      low      11  mid-low       9 mid-high
+12 20132582   4   4   3   3   2   4   5   2   4    3    2    4       8 mid-high       5  mid-low       7 mid-high      13 mid-high       7     high
+13 20102808   2   5   5   4   4   2   4   2   4    4    3    2       4      low       8 mid-high       8 mid-high      11  mid-low      10 mid-high
+14 20091701   3   3   4   1   2   4   5   5   1    2    4    2       7 mid-high       4      low       2      low      10      low      13  mid-low
+15 20111239   5   3   4   2   3   3   5   2   2    1    1    4       8 mid-high       4      low       4      low      12  mid-low       7 mid-high
+16 20142535   3   4   2   5   3   5   5   5   4    3    2    3       8 mid-high       6  mid-low       9     high      12  mid-low       9 mid-high
+17 20132527   4   5   5   1   1   4   4   1   1    3    3    1       8 mid-high       4      low       2      low      10      low       9  mid-low
+18 20134339   2   5   3   3   5   4   3   2   2    3    3    4       6  mid-low       8 mid-high       5  mid-low      12  mid-low       8 mid-high
+19 20142508   2   4   3   2   3   4   5   3   1    3    2    5       6  mid-low       6  mid-low       3      low      14     high       8     high
+20 20142551   2   3   4   4   4   2   5   3   3    4    4    1       4      low       8 mid-high       7 mid-high       9      low      11  mid-low
+21 20102952   3   1   2   3   3   3   4   3   1    4    4    5       6  mid-low       7 mid-high       4      low      10      low       9  mid-low
+22 20123120   4   4   4   4   3   4   3   4   5    4    3    4       8 mid-high       7 mid-high       9     high      11  mid-low      11 mid-high
+23 20126282   4   5   3   4   5   3   4   2   3    5    4    4       7 mid-high      10     high       7 mid-high      13 mid-high       9     high
+24 20143607   4   4   4   2   3   1   5   4   3    2    2    3       5  mid-low       5  mid-low       5  mid-low      12  mid-low      10 mid-high
+25 20131123   2   3   5   4   3   4   4   5   5    4    1    4       6  mid-low       7 mid-high       9     high      11  mid-low      11 mid-high
+26 20113105   2   4   3   2   4   2   4   4   3    4    2    4       4      low       8 mid-high       5  mid-low      12  mid-low       9 mid-high
+27 20113103   3   3   4   3   4   4   2   4   3    5    3    4       7 mid-high       9     high       6  mid-low       9      low      11  mid-low
+28 20113151   2   4   3   5   2   4   3   4   5    1    4    4       6  mid-low       3      low      10     high      11  mid-low      11 mid-high
+29 20113123   2   1   1   4   2   2   3   5   5    4    2    4       4      low       6  mid-low       9     high       8      low       8      low
+30 20101722   2   3   4   2   4   2   2   1   3    4    4    2       4      low       8 mid-high       5  mid-low       7      low       9      low
+31 20114157   3   2   2   5   3   3   5   5   4    3    3    4       6  mid-low       6  mid-low       9     high      11  mid-low      10 mid-high
+32 20131709   3   4   2   4   3   2   5   3   2    4    2    3       5  mid-low       7 mid-high       6  mid-low      12  mid-low       7 mid-high
+33 20143167   3   4   2   3   3   4   4   3   3    3    3    4       7 mid-high       6  mid-low       6  mid-low      12  mid-low       8 mid-high
+34 20122150   3   5   3   4   4   4   3   2   3    4    3    5       7 mid-high       8 mid-high       7 mid-high      13 mid-high       8     high
+35 20144347   4   4   3   3   2   3   4   4   4    2    2    3       7 mid-high       4      low       7 mid-high      11  mid-low       9 mid-high
+36 20144338   3   2   2   3   3   3   4   3   2    3    2    4       6  mid-low       6  mid-low       5  mid-low      10      low       7  mid-low
+37 20128009   3   4   3   4   3   4   3   1   4    4    2    4       7 mid-high       7 mid-high       8 mid-high      11  mid-low       6 mid-high
+38 20122121   4   5   4   3   4   3   4   2   2    5    4    5       7 mid-high       9     high       5  mid-low      14     high      10     high
+39 20143230   4   5   4   3   4   3   3   1   2    4    3    5       7 mid-high       8 mid-high       5  mid-low      13 mid-high       8     high
+40 20143134   4   4   4   4   3   4   5   4   2    3    1    4       8 mid-high       6  mid-low       6  mid-low      13 mid-high       9     high
+41 20121123   2   4   4   3   1   2   4   5   2    3    1    4       4      low       4      low       5  mid-low      12  mid-low      10 mid-high
+42 20143131   3   4   2   1   2   4   5   2   2    1    2    5       7 mid-high       3      low       3      low      14     high       6     high
+43 20112633   4   5   4   5   3   5   5   1   4    3    3    5       9     high       6  mid-low       9     high      15     high       8     high
+44 20143121   4   4   3   2   3   4   4   5   2    3    4    5       8 mid-high       6  mid-low       4      low      13 mid-high      12     high
+45 20112579   4   4   3   5   4   3   3   4   1    5    4    5       7 mid-high       9     high       6  mid-low      12  mid-low      11 mid-high
+46 20102908   3   4   2   3   1   4   4   3   4    2    3    2       7 mid-high       3      low       7 mid-high      10      low       8  mid-low
+47 20102903   5   4   3   4   2   3   3   2   2    3    3    3       8 mid-high       5  mid-low       6  mid-low      10      low       8  mid-low
+48 20132808   5   5   2   3   2   3   5   5   2    4    2    4       8 mid-high       6  mid-low       5  mid-low      14     high       9     high
+49 20142538   4   5   3   3   4   5   4   1   2    5    4    5       9     high       9     high       5  mid-low      14     high       8     high
+50 20131121   3   5   5   3   4   3   4   5   2    5    2    5       6  mid-low       9     high       5  mid-low      14     high      12     high
+51 20142505   2   4   3   3   3   3   5   4   5    3    2    4       5  mid-low       6  mid-low       8 mid-high      13 mid-high       9     high
+52 20122218   2   3   2   3   2   3   4   4   3    4    2    3       5  mid-low       6  mid-low       6  mid-low      10      low       8  mid-low
+53 20133161   4   4   1   4   3   3   5   3   3    3    2    4       7 mid-high       6  mid-low       7 mid-high      13 mid-high       6     high
+54 20122216   4   4   3   3   3   4   2   3   2    4    3    4       8 mid-high       7 mid-high       5  mid-low      10      low       9  mid-low
+55 20132613   4   3   5   4   5   4   4   3   4    1    2    2       8 mid-high       6  mid-low       8 mid-high       9      low      10  mid-low
+56 20143229   5   4   2   4   2   3   5   5   2    2    2    5       8 mid-high       4      low       6  mid-low      14     high       9     high
+57 20102806   3   2   2   4   3   3   4   4   5    3    2    4       6  mid-low       6  mid-low       9     high      10      low       8  mid-low
+58 20102829   5   4   2   5   3   5   5   3   4    3    4    5      10     high       6  mid-low       9     high      14     high       9     high
+59 20081519   4   4   3   3   3   4   4   2   4    3    2    5       8 mid-high       6  mid-low       7 mid-high      13 mid-high       7     high
+60 20092850   3   4   1   5   1   2   5   5   5    1    3    2       5  mid-low       2      low      10     high      11  mid-low       9 mid-high
+61 20142236   2   4   3   2   2   3   4   4   4    4    2    4       5  mid-low       6  mid-low       6  mid-low      12  mid-low       9 mid-high
+62 20142897   5   5   2   5   2   3   2   4   3    3    3    4       8 mid-high       5  mid-low       8 mid-high      11  mid-low       9 mid-high
+63 20121133   2   4   4   4   3   3   5   4   4    3    2    4       5  mid-low       6  mid-low       8 mid-high      13 mid-high      10     high
+64 20122609   2   5   3   3   2   2   4   2   1    5    1    4       4      low       7 mid-high       4      low      13 mid-high       6     high
+65 20143221   4   4   2   4   4   4   4   5   2    4    2    4       8 mid-high       8 mid-high       6  mid-low      12  mid-low       9 mid-high
+R > 
+## 학번과 이름이 나오도록 class.roll 과 합치기. * join()함수를 이용하기 위해서는 plyr 패키지를 설치하여야 함. 
+# 설치여부 확인
+R > search()
+ [1] ".GlobalEnv"        "package:plyr"      "tools:RGUI"        "package:stats"     "package:graphics"  "package:grDevices" "package:utils"     "package:datasets"  "KoreaEnv"         
+[10] "package:methods"   "Autoloads"         "package:base"  
+# bfi의 NA는 천기웅 군으로 확인.  천기웅 군의 학번으로 대체.
+R > bfi1402[5,1]<-20112944  
+## join()함수를 이용하여 class.roll의 학번, 이름 부분과 bfi1402 합침. * 여기서 ID 변수를 by로 설정.
+R > bfi1402.full<-join(class.roll[,1:2],bfi1402,by="ID")
+R > bfi1402.full
+         ID               name Q_1 Q_2 Q_3 Q_4 Q_5 Q_6 Q_7 Q_8 Q_9 Q_10 Q_11 Q_12 E.score  E.level N.score  N.level C.score  C.level A.score  A.level O.score  O.level
+1  20128009 SARUUL_SHIJIRNARAN   3   4   3   4   3   4   3   1   4    4    2    4       7 mid-high       7 mid-high       8 mid-high      11  mid-low       6 mid-high
+2  20091701             고경찬   3   3   4   1   2   4   5   5   1    2    4    2       7 mid-high       4      low       2      low      10      low      13  mid-low
+3  20142505             고현우   2   4   3   3   3   3   5   4   5    3    2    4       5  mid-low       6  mid-low       8 mid-high      13 mid-high       9     high
+4  20102806             권상훈   3   2   2   4   3   3   4   4   5    3    2    4       6  mid-low       6  mid-low       9     high      10      low       8  mid-low
+5  20142508             권소연   2   4   3   2   3   4   5   3   1    3    2    5       6  mid-low       6  mid-low       3      low      14     high       8     high
+6  20132808             권소현   5   5   2   3   2   3   5   5   2    4    2    4       8 mid-high       6  mid-low       5  mid-low      14     high       9     high
+7  20102203             권영민   1   2   2   3   4   4   5   4   3    5    1    4       5  mid-low       9     high       6  mid-low      11  mid-low       7 mid-high
+8  20102808             권준현   2   5   5   4   4   2   4   2   4    4    3    2       4      low       8 mid-high       8 mid-high      11  mid-low      10 mid-high
+9  20113103             김경선   3   3   4   3   4   4   2   4   3    5    3    4       7 mid-high       9     high       6  mid-low       9      low      11  mid-low
+10 20113105             김경수   2   4   3   2   4   2   4   4   3    4    2    4       4      low       8 mid-high       5  mid-low      12  mid-low       9 mid-high
+11 20134308             김기욱   3   3   2   3   2   4   3   3   4    4    2    3       7 mid-high       6  mid-low       7 mid-high       9      low       7  mid-low
+12 20143607             김단비   4   4   4   2   3   1   5   4   3    2    2    3       5  mid-low       5  mid-low       5  mid-low      12  mid-low      10 mid-high
+13 20102829             김영대   5   4   2   5   3   5   5   3   4    3    4    5      10     high       6  mid-low       9     high      14     high       9     high
+14 20132527             김은서   4   5   5   1   1   4   4   1   1    3    3    1       8 mid-high       4      low       2      low      10      low       9  mid-low
+15 20103306             김정재   1   1   1   2   3   2   2   2   4    4    2    3       3      low       7 mid-high       6  mid-low       6      low       5      low
+16 20142535             김정훈   3   4   2   5   3   5   5   5   4    3    2    3       8 mid-high       6  mid-low       9     high      12  mid-low       9 mid-high
+17 20123120             김종윤   4   4   4   4   3   4   3   4   5    4    3    4       8 mid-high       7 mid-high       9     high      11  mid-low      11 mid-high
+18 20142538             김현우   4   5   3   3   4   5   4   1   2    5    4    5       9     high       9     high       5  mid-low      14     high       8     high
+19 20143121             나지현   4   4   3   2   3   4   4   5   2    3    4    5       8 mid-high       6  mid-low       4      low      13 mid-high      12     high
+20 20131709             류호정   3   4   2   4   3   2   5   3   2    4    2    3       5  mid-low       7 mid-high       6  mid-low      12  mid-low       7 mid-high
+21 20114123             문유진  NA  NA  NA  NA  NA  NA  NA  NA  NA   NA   NA   NA      NA     <NA>      NA     <NA>      NA     <NA>      NA     <NA>      NA     <NA>
+22 20142551             박규현   2   3   4   4   4   2   5   3   3    4    4    1       4      low       8 mid-high       7 mid-high       9      low      11  mid-low
+23 20092850             박재형   3   4   1   5   1   2   5   5   5    1    3    2       5  mid-low       2      low      10     high      11  mid-low       9 mid-high
+24 20112567             박지수  NA  NA  NA  NA  NA  NA  NA  NA  NA   NA   NA   NA      NA     <NA>      NA     <NA>      NA     <NA>      NA     <NA>      NA     <NA>
+25 20113123             박태선   2   1   1   4   2   2   3   5   5    4    2    4       4      low       6  mid-low       9     high       8      low       8      low
+26 20143217             박혜린  NA  NA  NA  NA  NA  NA  NA  NA  NA   NA   NA   NA      NA     <NA>      NA     <NA>      NA     <NA>      NA     <NA>      NA     <NA>
+27 20143131             배수아   3   4   2   1   2   4   5   2   2    1    2    5       7 mid-high       3      low       3      low      14     high       6     high
+28 20122216             서문석   4   4   3   3   3   4   2   3   2    4    3    4       8 mid-high       7 mid-high       5  mid-low      10      low       9  mid-low
+29 20143134             서지우   4   4   4   4   3   4   5   4   2    3    1    4       8 mid-high       6  mid-low       6  mid-low      13 mid-high       9     high
+30 20121123             손선영   2   4   4   3   1   2   4   5   2    3    1    4       4      low       4      low       5  mid-low      12  mid-low      10 mid-high
+31 20112579             손솔아   4   4   3   5   4   3   3   4   1    5    4    5       7 mid-high       9     high       6  mid-low      12  mid-low      11 mid-high
+32 20144326             손희찬  NA  NA  NA  NA  NA  NA  NA  NA  NA   NA   NA   NA      NA     <NA>      NA     <NA>      NA     <NA>      NA     <NA>      NA     <NA>
+33 20122121             송슬기   4   5   4   3   4   3   4   2   2    5    4    5       7 mid-high       9     high       5  mid-low      14     high      10     high
+34 20122218             신예솔   2   3   2   3   2   3   4   4   3    4    2    3       5  mid-low       6  mid-low       6  mid-low      10      low       8  mid-low
+35 20103317             신지용   3   3   3   3   1   3   5   5   4    3    1    3       6  mid-low       4      low       7 mid-high      11  mid-low       9 mid-high
+36 20103319             양성훈   2   2   1   3   1   1   5   5   3    3    1    4       3      low       4      low       6  mid-low      11  mid-low       7 mid-high
+37 20131121             양인영   3   5   5   3   4   3   4   5   2    5    2    5       6  mid-low       9     high       5  mid-low      14     high      12     high
+38 20134339             엄무용   2   5   3   3   5   4   3   2   2    3    3    4       6  mid-low       8 mid-high       5  mid-low      12  mid-low       8 mid-high
+39 20143221             엄슬기   4   4   2   4   4   4   4   5   2    4    2    4       8 mid-high       8 mid-high       6  mid-low      12  mid-low       9 mid-high
+40 20144337             연초롱   4   4   2   3   3   3   5   5   5    4    2    4       7 mid-high       7 mid-high       8 mid-high      13 mid-high       9     high
+41 20144338             오현민   3   2   2   3   3   3   4   3   2    3    2    4       6  mid-low       6  mid-low       5  mid-low      10      low       7  mid-low
+42 20144340             유민서   3   3   2   3   3   3   4   5   5    3    2    4       6  mid-low       6  mid-low       8 mid-high      11  mid-low       9 mid-high
+43 20132582             유수연   4   4   3   3   2   4   5   2   4    3    2    4       8 mid-high       5  mid-low       7 mid-high      13 mid-high       7     high
+44 20131123             육소연   2   3   5   4   3   4   4   5   5    4    1    4       6  mid-low       7 mid-high       9     high      11  mid-low      11 mid-high
+45 20101722               이건   2   3   4   2   4   2   2   1   3    4    4    2       4      low       8 mid-high       5  mid-low       7      low       9      low
+46 20132229             이미나   2   4   2   2   4   2   5   5   2    4    3    5       4      low       8 mid-high       4      low      14     high      10     high
+47 20102903             이상현   5   4   3   4   2   3   3   2   2    3    3    3       8 mid-high       5  mid-low       6  mid-low      10      low       8  mid-low
+48 20102908             이승민   3   4   2   3   1   4   4   3   4    2    3    2       7 mid-high       3      low       7 mid-high      10      low       8  mid-low
+49 20144347             이정환   4   4   3   3   2   3   4   4   4    2    2    3       7 mid-high       4      low       7 mid-high      11  mid-low       9 mid-high
+50 20121133             이지영   2   4   4   4   3   3   5   4   4    3    2    4       5  mid-low       6  mid-low       8 mid-high      13 mid-high      10     high
+51 20142897             이지원   5   5   2   5   2   3   2   4   3    3    3    4       8 mid-high       5  mid-low       8 mid-high      11  mid-low       9 mid-high
+52 20122609             이지현   2   5   3   3   2   2   4   2   1    5    1    4       4      low       7 mid-high       4      low      13 mid-high       6     high
+53 20113151             이창명   2   4   3   5   2   4   3   4   5    1    4    4       6  mid-low       3      low      10     high      11  mid-low      11 mid-high
+54 20131726             이혜진   3   2   2   3   4   4   4   4   4    4    2    4       7 mid-high       8 mid-high       7 mid-high      10      low       8  mid-low
+55 20081519             임성호   4   4   3   3   3   4   4   2   4    3    2    5       8 mid-high       6  mid-low       7 mid-high      13 mid-high       7     high
+56 20132613             장형우   4   3   5   4   5   4   4   3   4    1    2    2       8 mid-high       6  mid-low       8 mid-high       9      low      10  mid-low
+57 20143229             전예빈   5   4   2   4   2   3   5   5   2    2    2    5       8 mid-high       4      low       6  mid-low      14     high       9     high
+58 20143230             전재승   4   5   4   3   4   3   3   1   2    4    3    5       7 mid-high       8 mid-high       5  mid-low      13 mid-high       8     high
+59 20112633             정계환   4   5   4   5   3   5   5   1   4    3    3    5       9     high       6  mid-low       9     high      15     high       8     high
+60 20126282             정성환   4   5   3   4   5   3   4   2   3    5    4    4       7 mid-high      10     high       7 mid-high      13 mid-high       9     high
+61 20111239             정예리   5   3   4   2   3   3   5   2   2    1    1    4       8 mid-high       4      low       4      low      12  mid-low       7 mid-high
+62 20133161             정인교   4   4   1   4   3   3   5   3   3    3    2    4       7 mid-high       6  mid-low       7 mid-high      13 mid-high       6     high
+63 20132933             조태희  NA  NA  NA  NA  NA  NA  NA  NA  NA   NA   NA   NA      NA     <NA>      NA     <NA>      NA     <NA>      NA     <NA>      NA     <NA>
+64 20142236             조혜은   2   4   3   2   2   3   4   4   4    4    2    4       5  mid-low       6  mid-low       6  mid-low      12  mid-low       9 mid-high
+65 20112944             천기웅   4   4   3   2   3   3   2   2   4    2    4    2       7 mid-high       5  mid-low       6  mid-low       8      low       9      low
+66 20132144             한도현  NA  NA  NA  NA  NA  NA  NA  NA  NA   NA   NA   NA      NA     <NA>      NA     <NA>      NA     <NA>      NA     <NA>      NA     <NA>
+67 20122150             한유정   3   5   3   4   4   4   3   2   3    4    3    5       7 mid-high       8 mid-high       7 mid-high      13 mid-high       8     high
+68 20143243             한태연   3   3   2   2   3   2   4   5   2    4    2    4       5  mid-low       7 mid-high       4      low      11  mid-low       9 mid-high
+69 20143167             허수민   3   4   2   3   3   4   4   3   3    3    3    4       7 mid-high       6  mid-low       6  mid-low      12  mid-low       8 mid-high
+70 20102952             홍기재   3   1   2   3   3   3   4   3   1    4    4    5       6  mid-low       7 mid-high       4      low      10      low       9  mid-low
+71 20114157             홍진기   3   2   2   5   3   3   5   5   4    3    3    4       6  mid-low       6  mid-low       9     high      11  mid-low      10 mid-high
+R > 
+## 각 성격유형의 분포 파악 * 마지막에 붙이 [c(1,3,4,2),]는 왜 필요할까?
+R > apply(bfi1402[,c(15,17,19,21,23)],2,table)[c(1,3,4,2),]
+         E.level N.level C.level A.level O.level
+high           3       7      10      10      22
+mid-high      32      20      19      12      25
+mid-low       20      26      26      25      14
+low           10      12      10      18       4
+## 더 이상의 분석은 각자에게 ^^

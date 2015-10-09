@@ -1,0 +1,116 @@
+R > print(f3w,digits=3)
+Factor Analysis using method =  wls
+Call: fa(r = Thurstone, nfactors = 3, n.obs = 213, fm = "wls")
+Standardized loadings (pattern matrix) based upon correlation matrix
+                  WLS1   WLS2   WLS3    h2    u2  com
+Sentences        0.905 -0.034  0.040 0.822 0.178 1.01
+Vocabulary       0.890  0.066 -0.031 0.835 0.165 1.01
+Sent.Completion  0.833  0.034  0.007 0.735 0.265 1.00
+First.Letters   -0.002  0.855  0.003 0.731 0.269 1.00
+4.Letter.Words  -0.016  0.743  0.106 0.629 0.371 1.04
+Suffixes         0.180  0.626 -0.082 0.496 0.504 1.20
+Letter.Series    0.033 -0.015  0.838 0.719 0.281 1.00
+Pedigrees        0.381 -0.051  0.464 0.505 0.495 1.95
+Letter.Group    -0.062  0.209  0.632 0.527 0.473 1.24
+
+                       WLS1  WLS2  WLS3
+SS loadings           2.647 1.864 1.488
+Proportion Var        0.294 0.207 0.165
+Cumulative Var        0.294 0.501 0.667
+Proportion Explained  0.441 0.311 0.248
+Cumulative Proportion 0.441 0.752 1.000
+
+ With factor correlations of 
+      WLS1  WLS2  WLS3
+WLS1 1.000 0.591 0.535
+WLS2 0.591 1.000 0.516
+WLS3 0.535 0.516 1.000
+
+Mean item complexity =  1.2
+Test of the hypothesis that 3 factors are sufficient.
+
+The degrees of freedom for the null model are  36  and the objective function was  5.198 with Chi Square of  1081.968
+The degrees of freedom for the model are 12  and the objective function was  0.014 
+
+The root mean square of the residuals (RMSR) is  0.006 
+The df corrected root mean square of the residuals is  0.01 
+
+The harmonic number of observations is  213 with the empirical chi square  0.531  with prob <  1 
+The total number of observations was  213  with MLE Chi Square =  2.886  with prob <  0.996 
+
+Tucker Lewis Index of factoring reliability =  1.0264
+RMSEA index =  0  and the 90 % confidence intervals are  NA NA
+BIC =  -61.45
+Fit based upon off diagonal values = 1
+Measures of factor score adequacy             
+                                                WLS1  WLS2  WLS3
+Correlation of scores with factors             0.964 0.923 0.902
+Multiple R square of scores with factors       0.929 0.853 0.814
+Minimum correlation of possible factor scores  0.858 0.706 0.627
+R > p3p<-principal(Thurstone,3,rotate="Promax",n.obs=213)
+R > p3p
+Principal Components Analysis
+Call: principal(r = Thurstone, nfactors = 3, rotate = "Promax", n.obs = 213)
+Standardized loadings (pattern matrix) based upon correlation matrix
+                  PC1   PC2   PC3   h2   u2
+Sentences        0.92  0.01  0.01 0.86 0.14
+Vocabulary       0.90  0.10 -0.05 0.86 0.14
+Sent.Completion  0.91  0.04 -0.04 0.83 0.17
+First.Letters    0.01  0.84  0.07 0.78 0.22
+4.Letter.Words  -0.05  0.81  0.17 0.75 0.25
+Suffixes         0.18  0.79 -0.15 0.70 0.30
+Letter.Series    0.03 -0.03  0.88 0.78 0.22
+Pedigrees        0.45 -0.16  0.57 0.67 0.33
+Letter.Group    -0.19  0.19  0.86 0.75 0.25
+
+                       PC1  PC2  PC3
+SS loadings           2.83 2.19 1.96
+Proportion Var        0.31 0.24 0.22
+Cumulative Var        0.31 0.56 0.78
+Proportion Explained  0.41 0.31 0.28
+Cumulative Proportion 0.41 0.72 1.00
+
+ With component correlations of 
+     PC1  PC2  PC3
+PC1 1.00 0.51 0.53
+PC2 0.51 1.00 0.44
+PC3 0.53 0.44 1.00
+
+Test of the hypothesis that 3 components are sufficient.
+
+The degrees of freedom for the null model are  36  and the objective function was  5.2
+The degrees of freedom for the model are 12  and the objective function was  0.62 
+The total number of observations was  213  with MLE Chi Square =  127.9  with prob <  1.6e-21 
+
+Fit based upon off diagonal values = 0.98
+R > om.h<-omega(Thurstone,n.obs=213,sl=F)
+R > om<-omega(Thurstone,n.obs=213)
+R > read.clipboard
+function (header = TRUE, ...) 
+{
+    MAC <- Sys.info()[1] == "Darwin"
+    if (!MAC) {
+        if (header) 
+            return(read.table(file("clipboard"), header = TRUE, 
+                ...))
+        else return(read.table(file("clipboard"), ...))
+    }
+    else {
+        if (header) {
+            return(read.table(pipe("pbpaste"), header = TRUE, 
+                ...))
+        }
+        else {
+            return(read.table(pipe("pbpaste"), ...))
+        }
+    }
+}
+<environment: namespace:psych>
+R > setwd("~/Dropbox/works/Statistics/R.WD/class2014/")
+R > ls()
+ [1] "countries.with.NA"        "country"                  "country.2"                "f3w"                      "health.social.index"     
+ [6] "health.social.index.2"    "inequality.index"         "inequality.index.2"       "international.inequality" "loadings.reduced"        
+[11] "mean.zscores.rev"         "om"                       "om.h"                     "p3p"                      "prod.vs.income"          
+[16] "score"                    "scores.reduced"           "sum.scores.reduced"       "variables.with.NA"        "working.data"            
+[21] "working.data.2"           "working.data.2.scaled"    "zscores"                  "zscores.rev"             
+R > rm(list=ls())

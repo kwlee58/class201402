@@ -1,0 +1,96 @@
+---
+title: "East West and Gorilla"
+author: "coop711"
+date: "2015년 6월 1일"
+output: html_document
+---
+
+Data Read in
+------------
+
+동과 서의 차이에 대한 응답지 읽어들이기
+
+```{r}
+east.west1402<-read.table("east_west1402.txt", header=TRUE)
+str(east.west1402)
+```
+
+필요한 `chr` 오브젝트들을 `factor`로 변환
+
+```{r}
+east.west.2<-east.west1402
+east.west.2$sex<-factor(east.west.2$sex, levels=c("남", "여"))
+str(east.west.2)
+```
+
+지역 관련 요인을 '수도권'과 '지방'으로 크게 구분
+
+```{r}
+east.west.2$region<-factor(east.west.2$region, levels=c("서울", "경기","인천", "대구", "광주", "울산", "강원", "경상", "몽골"))
+str(east.west.2)
+east.west.2$region.2<-factor(ifelse(east.west.2$region %in% c("서울", "경기", "인천"), "수도권", "지방"), levels=c("수도권", "지방"))
+str(east.west.2)
+```
+
+학번을 크게 '13학번 이후', '12학번 이전'과 '12학번 이후', '11학번 이전'으로 크게 구분.
+
+```{r}
+east.west.2$year<-factor(ifelse(east.west.2$year.entrance %in% c(2013, 2014), "Younger", "Older"), levels=c("Younger", "Older"), labels=c("13학번 이후", "12학번 이전"))
+east.west.2$year.2<-factor(ifelse(east.west.2$year.entrance %in% c(2012, 2013, 2014), "Younger", "Older"), levels=c("Younger", "Older"), labels=c("12학번 이후", "11학번 이전"))
+str(east.west.2)
+```
+
+각 질문의 응답을 한글로 쉽게 파악하도록 변환
+
+```{r}
+east.west.2$monkey<-factor(east.west.2$Q_1, levels=1:3, labels=c("원숭이-바나나", "원숭이-팬더", "팬더-바나나"))
+east.west.2$leader<-factor(east.west.2$Q_2, levels=1:2, labels=c("여전히 행복하다", "행복하지 않다"))
+east.west.2$saucer<-factor(east.west.2$Q_3, levels=1:3, labels=c("맨 위", "중간", "맨 아래"))
+```
+
+계산이 좀 편하도록 `east.west.2`를 검색 목록에 올림. 소수이하 자릿수 조정
+
+```{r}
+attach(east.west.2)
+options(digits=2)
+```
+
+원숭이-바나나-팬더 질문에 대하여 성별, 출신지역별, 학번별 차이 확인. 주변합과 주변분포를 함께 표시
+
+```{r}
+addmargins(table("둘을 묶으면?"=monkey, "성별"=sex))
+prop.table(table("둘을 묶으면?"=monkey, "성별"=sex),2)
+addmargins(table("둘을 묶으면?"=monkey, "지역"=region.2))
+prop.table(table("둘을 묶으면?"=monkey, "지역"=region.2),2)
+addmargins(table("둘을 묶으면?"=monkey, "학번"=year))
+prop.table(table("둘을 묶으면?"=monkey, "학번"=year),2)
+addmargins(table("둘을 묶으면?"=monkey, "학번"=year.2))
+prop.table(table("둘을 묶으면?"=monkey, "학번"=year.2),2)
+```
+
+여전히 행복한가요? 질문에 대하여 성별, 지역별, 학번별 차이 확인.
+
+```{r}
+addmargins(table("여전히 행복한가요?"=leader, "성별"=sex))
+prop.table(table("여전히 행복한가요?"=leader, "성별"=sex), margin=2)
+addmargins(table("여전히 행복한가요?"=leader, "지역"=region.2))
+prop.table(table("여전히 행복한가요?"=leader, "지역"=region.2), margin=2)
+addmargins(table("여전히 행복한가요?"=leader, "학번"=year))
+prop.table(table("여전히 행복한가요?"=leader, "학번"=year),2)
+addmargins(table("여전히 행복한가요?"=leader, "학번"=year.2))
+prop.table(table("여전히 행복한가요?"=leader, "학번"=year.2),2)
+```
+
+어느 것이 앞에 있나요? 질문에 대하여 성별, 지역별, 학번별 차이 확인.
+
+```{r}
+addmargins(table("어느 것이 앞에 있나요?"=saucer, "성별"=sex))
+prop.table(table("어느 것이 앞에 있나요?"=saucer, "성별"=sex),2)
+addmargins(table("어느 것이 앞에 있나요?"=saucer, "지역"=region.2))
+prop.table(table("어느 것이 앞에 있나요?"=saucer, "지역"=region.2),2)
+addmargins(table("어느 것이 앞에 있나요?"=saucer, "학번"=year))
+prop.table(table("어느 것이 앞에 있나요?"=saucer, "학번"=year),2)
+addmargins(table("어느 것이 앞에 있나요?"=saucer, "학번"=year.2))
+prop.table(table("어느 것이 앞에 있나요?"=saucer, "학번"=year.2),2)
+```
+

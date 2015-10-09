@@ -1,0 +1,12 @@
+png("age_cumulative_distribution.png",width=640,height=640)
+plot(seq(0,105,by=5),cumsum(c(0,age.distribution[,2])/sum(age.distribution[,2])*100),type="l",xlab="",ylab="",xaxt="n",yaxt="n")
+title(main="Age Cumulative Distribution(2010)",xlab="Age",ylab="Cumulative Percentage(%)")
+axis(side=1,at=seq(0,105,by=5),labels=paste(seq(0,105,by=5)))
+axis(side=2,at=seq(0,100,by=25),labels=paste(seq(0,100,by=25)))
+polygon(c(x,rev(x)),c(rep(100,22),rev(y)),angle=135,density=10)
+text(x=20,y=60,labels="Mean",col="red",cex=2)
+abline(h=50,lty=2)
+arrows(x0=37,y0=50,x1=37,y1=0,code=2)
+text(x=40,y=5, pos=4, labels="Median",cex=2,col="red")
+dev.off()
+      

@@ -1,0 +1,238 @@
+## "원숭이-바나나, 원숭이-팬더, 팬더-바나나" 문제의 전체 응답
+R > table(east.west1402$Q_1.2)
+
+monkey-banana  monkey-panda  panda-banana 
+           38            22             3 
+
+## "여전히 행복한가요" 문제의 전체 응답
+R > table(east.west1402$Q_2.2)
+
+    happy not happy 
+       27        36 
+
+## "어느 것이 앞에 있나요" 문제의 전체 응답
+R > table(east.west1402$Q_3.2)
+
+   top middle bottom 
+    31      2     29 
+
+## "원숭이-바나나, 원숭이-팬더, 팬더-바나나" 문제의 남녀별 응답
+R > table(east.west1402$sex,east.west1402$Q_1.2)
+    
+     monkey-banana monkey-panda panda-banana
+  남            22           13            2
+  여            16            9            1
+
+## "원숭이-바나나, 원숭이-팬더, 팬더-바나나" 문제의 남녀별 응답 비율 
+R > round(prop.table(table(east.west1402$sex,east.west1402$Q_1.2),margin=1),digits=2)
+    
+     monkey-banana monkey-panda panda-banana
+  남          0.59         0.35         0.05
+  여          0.62         0.35         0.04
+
+
+
+## "여전히 행복한가요" 문제의 남녀별 응답
+R > table(east.west1402$sex,east.west1402$Q_2.2)
+    
+     happy not happy
+  남    16        21
+  여    11        15
+  
+## "여전히 행복한가요" 문제의 남녀별 응답 비율  
+R > round(prop.table(table(east.west1402$sex,east.west1402$Q_2.2),margin=1),digits=2)
+    
+     happy not happy
+  남  0.43      0.57
+  여  0.42      0.58
+
+## "어느 것이 앞에 있나요" 문제의 남녀별 응답
+R > table(east.west1402$sex,east.west1402$Q_3.2)
+    
+     top middle bottom
+  남  23      1     12
+  여   8      1     17
+  
+## "어느 것이 앞에 있나요" 문제의 남녀별 응답 비율
+R > round(prop.table(table(east.west1402$sex,east.west1402$Q_3.2),margin=1),digits=2)
+    
+      top middle bottom
+  남 0.64   0.03   0.33
+  여 0.31   0.04   0.65
+
+
+
+
+
+
+
+## "원숭이-바나나, 원숭이-팬더, 팬더-바나나" 문제의 출신지역별 응답
+R > table(east.west1402$region,east.west1402$Q_1.2)
+      
+       monkey-banana monkey-panda panda-banana
+  강원             7            4            0
+  경기            14            4            1
+  경상             1            0            0
+  광주             1            0            0
+  대구             1            1            0
+  몽골             0            1            0
+  서울            14           10            2
+  울산             0            1            0
+  인천             0            1            0
+
+## "원숭이-바나나, 원숭이-팬더, 팬더-바나나" 문제의 출신지역별 응답 비율
+R > round(prop.table(table(east.west1402$region,east.west1402$Q_1.2),margin=1),digits=2)
+      
+       monkey-banana monkey-panda panda-banana
+  강원          0.64         0.36         0.00
+  경기          0.74         0.21         0.05
+  경상          1.00         0.00         0.00
+  광주          1.00         0.00         0.00
+  대구          0.50         0.50         0.00
+  몽골          0.00         1.00         0.00
+  서울          0.54         0.38         0.08
+  울산          0.00         1.00         0.00
+  인천          0.00         1.00         0.00
+
+
+
+
+
+
+
+## "여전히 행복한가요" 문제의 출신지역별 응답
+R > table(east.west1402$region,east.west1402$Q_2.2)
+      
+       happy not happy
+  강원     2         9
+  경기     6        13
+  경상     0         1
+  광주     1         0
+  대구     0         2
+  몽골     0         1
+  서울    16        10
+  울산     1         0
+  인천     1         0
+
+## "여전히 행복한가요" 문제의 출신지역별 응답 비율
+R > round(prop.table(table(east.west1402$region,east.west1402$Q_2.2),margin=1),digits=2)
+      
+       happy not happy
+  강원  0.18      0.82
+  경기  0.32      0.68
+  경상  0.00      1.00
+  광주  1.00      0.00
+  대구  0.00      1.00
+  몽골  0.00      1.00
+  서울  0.62      0.38
+  울산  1.00      0.00
+  인천  1.00      0.00
+  
+
+
+
+
+
+
+## "어느 것이 앞에 있나요" 문제의 출신지역별 응답
+R > table(east.west1402$region,east.west1402$Q_3.2)
+      
+       top middle bottom
+  강원   4      0      7
+  경기  12      1      6
+  경상   0      0      1
+  광주   1      0      0
+  대구   1      0      1
+  몽골   0      0      1
+  서울  11      1     13
+  울산   1      0      0
+  인천   1      0      0  
+
+## "어느 것이 앞에 있나요" 문제의 출신지역별 응답 비율
+R > round(prop.table(table(east.west1402$region,east.west1402$Q_3.2),margin=1),digits=2)
+      
+        top middle bottom
+  강원 0.36   0.00   0.64
+  경기 0.63   0.05   0.32
+  경상 0.00   0.00   1.00
+  광주 1.00   0.00   0.00
+  대구 0.50   0.00   0.50
+  몽골 0.00   0.00   1.00
+  서울 0.44   0.04   0.52
+  울산 1.00   0.00   0.00
+  인천 1.00   0.00   0.00
+
+
+
+
+
+
+
+## "원숭이-바나나, 원숭이-팬더, 팬더-바나나" 문제의 학번별 응답 
+R > table(east.west1402$year.entrance,east.west1402$Q_1.2)
+      
+       monkey-banana monkey-panda panda-banana
+  2009             1            1            0
+  2010             8            1            2
+  2011             4            3            0
+  2012             6            4            0
+  2013             8            4            1
+  2014            11            9            0
+
+## "원숭이-바나나, 원숭이-팬더, 팬더-바나나" 문제의 학번별 응답 비율
+R > round(prop.table(table(east.west1402$year.entrance,east.west1402$Q_1.2),margin=1),digits=2)
+      
+       monkey-banana monkey-panda panda-banana
+  2009          0.50         0.50         0.00
+  2010          0.73         0.09         0.18
+  2011          0.57         0.43         0.00
+  2012          0.60         0.40         0.00
+  2013          0.62         0.31         0.08
+  2014          0.55         0.45         0.00
+  
+## "어느 것이 앞에 있나요" 문제의 학번별 응답
+R > table(east.west1402$year.entrance,east.west1402$Q_2.2)
+      
+       happy not happy
+  2009     1         1
+  2010     4         7
+  2011     4         3
+  2012     6         4
+  2013     6         7
+  2014     6        14
+
+## "어느 것이 앞에 있나요" 문제의 학번별 응답 비율
+R > round(prop.table(table(east.west1402$year.entrance,east.west1402$Q_2.2),margin=1),digits=2)
+      
+       happy not happy
+  2009  0.50      0.50
+  2010  0.36      0.64
+  2011  0.57      0.43
+  2012  0.60      0.40
+  2013  0.46      0.54
+  2014  0.30      0.70
+
+
+## "어느 것이 앞에 있나요" 문제의 학번별 응답
+R > table(east.west1402$year.entrance,east.west1402$Q_3.2)
+      
+       top middle bottom
+  2009   2      0      0
+  2010   6      1      4
+  2011   4      0      3
+  2012   4      1      5
+  2013   5      0      8
+  2014  10      0      9
+  
+## "어느 것이 앞에 있나요" 문제의 학번별 응답 비율  
+R > round(prop.table(table(east.west1402$year.entrance,east.west1402$Q_3.2),margin=1),digits=2)
+      
+        top middle bottom
+  2009 1.00   0.00   0.00
+  2010 0.55   0.09   0.36
+  2011 0.57   0.00   0.43
+  2012 0.40   0.10   0.50
+  2013 0.38   0.00   0.62
+  2014 0.53   0.00   0.47
+R > 
+

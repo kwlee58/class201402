@@ -1,0 +1,361 @@
+---
+title: "Big_5_Personality"
+author: "coop711"
+date: "2015년 5월 27일"
+output: html_document
+---
+
+Read Data
+---------
+
+```{r}
+bfi<-read.table("BF201402.txt", header=TRUE)
+```
+
+
+유형진단
+--------
+
+12개 문항으로 성격유형 진단
+
+```{r}
+str(bfi)
+```
+
+첫 6명의 자료 확인
+
+```{r}
+head(bfi)
+```
+
+외향성 점수 합산
+
+```{r}
+E.score<-bfi$Q_1+bfi$Q_6
+```
+
+신경성 점수 합산
+
+```{r}
+N.score<-bfi$Q_5+bfi$Q_10
+```
+
+성실성 점수 합산
+
+```{r}
+C.score<-bfi$Q_4+bfi$Q_9
+```
+
+친화성 점수 합산
+
+```{r}
+A.score<-bfi$Q_2+bfi$Q_7+bfi$Q_12
+```
+
+개방성 점수 합산
+
+```{r}
+O.score<-bfi$Q_3+bfi$Q_8+bfi$Q_11
+```
+
+data frame으로 정리
+
+```{r}
+bfi.score<-data.frame(E.score, N.score, C.score, A.score, O.score)
+str(bfi.score)
+```
+
+`ifelse()` 함수를 이용하여 각 유형의 수준 판정, `ordered factor`임을 명시.
+
+```{r}
+E.level<-ifelse(E.score <= 4, "low", ifelse(E.score <=6, "mid-low", ifelse(E.score <=8, "mid-high", "high")))
+```
+
+수준 판정 확인
+
+```{r}
+head(data.frame(E.score, E.level))
+```
+
+다른 성격 유형에도 수준 판정 
+
+```{r}
+E.level<-ifelse(E.score <= 4, "low", ifelse(E.score <=6, "mid-low", ifelse(E.score <=8, "mid-high", "high")))
+N.level<-ifelse(N.score <= 4, "low", ifelse(N.score <=6, "mid-low", ifelse(N.score <=8, "mid-high", "high")))
+C.level<-ifelse(C.score <= 4, "low", ifelse(C.score <=6, "mid-low", ifelse(C.score <=8, "mid-high", "high")))
+A.level<-ifelse(A.score <= 10, "low", ifelse(A.score <=12, "mid-low", ifelse(A.score <=13, "mid-high", "high")))
+O.level<-ifelse(A.score <= 8, "low", ifelse(A.score <=10, "mid-low", ifelse(A.score <=12, "mid-high", "high")))
+```
+
+`lapply()`를 이용하여 각 성격유형의 수준을 ordered.factor 로 정리
+
+```{r}
+bfi.level<-data.frame(lapply(data.frame(E.level, N.level, C.level, A.level, O.level), function(x) factor(x, levels=c("low", "mid-low", "mid-high", "high"), ordered=TRUE)))
+str(bfi.level)
+```
+
+성격유형 파악
+
+```{r}
+head(bfi.level)
+```
+
+각 성격유형의 분포 파악
+
+```{r}
+sapply(bfi.level, table)
+```
+
+학번과 이름이 나오도록 전체 출석부가 들어 있는 `class.roll`과 합치기. `class.roll` 읽어들이기.
+
+```{r}
+load("class_roll_1402.rda")
+ls()
+head(class.roll)
+```
+
+`join()` 함수를 이용하기 위해서는 `plyr` 패키지를 설치하여야 함.
+
+```{r}
+install.packages("plyr", repos="http://cran.rstudio.com")
+library(plyr)
+search()
+```
+
+`bfi`의 NA는 천기웅 군으로 확인.  천기웅 군의 학번으로 대체.
+
+```{r}
+bfi[5, 1]<-20112944
+```
+
+`bfi.level`에 `bfi`의 ID 추가
+
+```{r}
+bfi.level.2<-data.frame(ID = bfi$ID, bfi.level)
+str(bfi.level.2)
+```
+
+`join()`함수를 이용하여 `class.roll`의 학번, 이름 부분과 `bfi.level.2` 합침. * 여기서 ID 변수를 by로 설정.
+
+```{r}
+bfi.full<-join(class.roll, bfi.level.2, by="ID")
+str(bfi.full)
+head(bfi.full)
+```
+
+다중지능 자료 읽어들이기
+------------------------
+
+```{r}
+MI<-read.table("MI1402.txt", header=T)
+str(MI)
+head(MI)
+```
+
+다중지능 점수 
+
+```{r}
+music.score<-MI$Q_1+MI$Q_9+MI$Q_17+MI$Q_25+MI$Q_33+MI$Q_41+MI$Q_49
+body.score<-MI$Q_2+MI$Q_10+MI$Q_18+MI$Q_26+MI$Q_34+MI$Q_42+MI$Q_50
+logic.score<-MI$Q_3+MI$Q_11+MI$Q_19+MI$Q_27+MI$Q_35+MI$Q_43+MI$Q_51
+spatial.score<-MI$Q_4+MI$Q_12+MI$Q_20+MI$Q_28+MI$Q_36+MI$Q_44+MI$Q_52
+verbal.score<-MI$Q_5+MI$Q_13+MI$Q_21+MI$Q_29+MI$Q_37+MI$Q_45+MI$Q_53
+people.score<-MI$Q_6+MI$Q_14+MI$Q_22+MI$Q_30+MI$Q_38+MI$Q_46+MI$Q_54
+self.score<-MI$Q_7+MI$Q_15+MI$Q_23+MI$Q_31+MI$Q_39+MI$Q_47+MI$Q_55
+nature.score<-MI$Q_8+MI$Q_16+MI$Q_24+MI$Q_32+MI$Q_40+MI$Q_48+MI$Q_56
+```
+
+학번을 첫째 열로 하는 data frame 구성
+
+```{r}
+MI.score<-data.frame(ID=MI$ID, music.score, body.score, logic.score, spatial.score, verbal.score, people.score, self.score, nature.score)
+```
+
+각 다중지능의 이름을 글자 벡터로 저장
+
+```{r}
+MI.names<-c("musical", "bodily-kinesthetic", "logical-mathematical", "visual-spatial", "verbal-lingusitic", "interpersonal", "intrapersonal", "naturalistic")
+```
+
+`MI.score` 의 열 이름을 학번과 지능이름으로 교체
+
+```{r}
+dimnames(MI.score)[[2]]<-c("ID", MI.names)
+```
+
+`MI.score` 확인
+
+```{r}
+head(MI.score)
+```
+
+`MI.score`의 첫번째 학생 점수를 내림차순으로 정리하는 인덱스를 `order()` 함수를 이용하여 추출
+
+```{r}
+order(MI.score[1, -1], decreasing = TRUE)[1:3]
+```
+
+3대 강점지능 추출
+
+```{r}
+MI.names[c(7,4,6)]
+```
+
+모든 학생의 인덱스를 추출하기 위하여 `apply()` 함수 적용. `MI.order` 에 저장
+
+```{r}
+MI.order<-apply(MI.score[, -1], 1, order, decreasing = TRUE)
+str(MI.order)
+```
+
+`apply()` 함수의 적용 결과 8 by 64 행렬이 나옴에 유의. `apply()` 도움말 참조.
+
+계산결과 확인
+
+```{r}
+MI.order[, 1]
+```
+
+다중 지능 점수로 확인
+
+```{r}
+MI.score[1, -1][MI.order[, 1]]
+MI.score[2, -1][MI.order[, 2]]
+MI.score[3, -1][MI.order[, 3]]
+```
+
+3대 강점 지능 확인
+
+```{r}
+MI.names[MI.order[1:3, 1]]
+```
+
+3명으로 확장하였을 때 매트릭스가 아닌 벡터로 나옴에 유의. 위에 나온 순서와 같음.
+
+```{r}
+MI.names[MI.order[1:3, 1:3]]
+```
+
+3대 강점 요인 뿐 아니라 세 학생의 다중지능을 높은 순서로 살펴보면 추출함수의 역할을 알 수 있음.
+
+```{r}
+MI.names[MI.order[, 1:3]]
+```
+
+하나의 긴 벡터로 나오기 때문에 학생별로 정리하려면 나온 결과를 매트릭스로 받아야 함.
+
+```{r}
+matrix(MI.names[MI.order[, 1:3]], ncol=8, byrow=T, dimnames=list(MI.score$ID[1:3], 1:8))
+```
+
+모든 학생에게 적용. `MI.sort` 로 저장
+
+```{r}
+MI.sort<-matrix(MI.names[MI.order], ncol=8, byrow=T, dimnames=list(MI.score$ID, 1:8))
+MI.sort
+```
+
+상위 3가지 강점지능만 추출
+
+```{r}
+MI.sort[, 1:3]
+```
+
+`NA`가 누구인지 추측하기 위한 과정(join 함수를 이용하려면 ID에 NA가 없어야 하기 때문에). 출석부에 있는 ID로 Big5 계산에도 참여한 ID의 index를 추출하여 `present`에 저장
+
+```{r}
+present<-which(class.roll$ID %in% bfi$ID)
+present
+```
+
+참여하지 않은 ID의 index 를 `absent` 에 저장
+
+```{r}
+absent<-(1:71)[-present]
+```
+
+참여하지 않은 ID 추출
+
+```{r}
+class.roll$ID[absent]
+```
+
+참여하지 않은 명단 추출
+
+```{r}
+class.roll$name[absent]
+```
+
+MI에 참여하지 않은 ID 추출
+
+```{r}
+MI.present<-which(class.roll$ID %in% MI$ID)
+MI.absent<-(1:71)[-MI.present]
+MI.absent
+class.roll$ID[MI.absent]
+```
+MI에 참여하지 않은 명단 추출
+
+```{r}
+class.roll$name[MI.absent]
+```
+
+김기욱은 시간이 없어서 `MI`에는 참여하지 못하였다고 진술하였으므로 양쪽에 다 나오지 않은 "이승민"을 `NA`로 추정. ID의 `NA`값을 "이승민"의 학번으로 교체하는 과정
+
+```{r}
+id.na<-which(is.na(MI$ID))
+MI$ID[id.na]<-20102908
+```
+
+`MI.sort`는 character matrix이기 때문에 `join()`을 이용하려면 `data.frame`으로 전환하여야 함.
+
+```{r}
+str(MI.sort)
+```
+
+`MI.sort` 의 경우 `row.names()`가 학번들로 되어 있고 character로 설정되어 있음.
+
+```{r}
+dimnames(MI.sort)
+```
+
+ID를 첫번째 변수로 하는  `data.frame` 으로 전환, `row.names`는 index로 설정
+
+```{r}
+MI.sort.df<-data.frame(ID = MI$ID, MI.sort, row.names=1:64)
+str(MI.sort.df)
+```
+
+join()함수 사용 준비 완료
+
+```{r}
+MI.sort.full<-join(class.roll, MI.sort.df, by="ID")
+MI.sort.full
+dimnames(MI.sort.full)[[2]][-(1:2)]<-paste(1:8)
+```
+
+상위 세가지 강점지능만 추출
+
+```{r}
+MI.sort.full[, 1:5]
+```
+
+Big 5와 상위 세 가지 강점지능 출력
+
+```{r}
+data.frame(bfi.full, MI.sort.full[, 3:5])
+```
+
+```
+save(file="bfi_MI150527.rda", list=ls())
+```
+
+
+
+
+
+
+
+
+
+
