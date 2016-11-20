@@ -1,18 +1,32 @@
 ---
-title: "Chocolate Experiment"
+title: "Chocolate Experiment 201402"
 author: "coop711"
-date: "2015년 6월 1일"
+date: "`r Sys.Date()`"
 output: html_document
 ---
 
-Data
-----
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+# install.packages("pander", repos = "https://cran.rstudio.com")
+# install.packages("xlsx", repos = "https://cran.rstudio.com")
+# library(xlsx)
+library(pander)
+library(knitr)
+panderOptions('table.split.table', Inf)
+panderOptions('table.alignment.rownames', 'left')
+panderOptions('table.alignment.default', 'right')
+options(width = 180)
+```
 
-관련 자료가 들어 있는 `rda`파일들 읽어들이기
+<!--
+### Data
 
-```{r}
-load("gorilla.rda")
-load("east_west.rda")
+
+성별 등 관련 자료가 들어 있는 `rda`파일들 읽어들이기
+
+```{r, data}
+load("gorilla_1402.RData")
+load("east_west1402.RData")
 load("class_roll_1402.rda")
 ls()
 ```
@@ -44,15 +58,33 @@ str(ew.gorilla.full)
 attach(ew.gorilla.full)
 options(digits=2)
 ```
+-->
 
 성별 차이, 학번별 차이를 파악하기 위하여 `tapply()` 활용
 
-```{r}
-table("몇 개나 나눠줄래요?"=chocolate, "성별"=sex)
-tapply(chocolate, sex, mean, na.rm=TRUE)
-tapply(chocolate, sex, median, na.rm=TRUE)
-tapply(chocolate, year, mean, na.rm=TRUE)
-tapply(chocolate, year.2, mean, na.rm=TRUE)
-tapply(chocolate, list(year, sex), mean, na.rm=TRUE)
+```{r, tapply}
+kable(t(as.matrix(table("몇 개나 나눠줄래요?" = chocolate), 1)))
+kable(table("성별" = sex, "몇 개나 나눠줄래요?" = chocolate))
+pander(tapply(chocolate, sex, summary))
+pander(tapply(chocolate, year.2, summary))
+pander(tapply(chocolate, list(year, sex), function(x) format(mean(x, na.rm = TRUE), digits = 2, nsmall = 1)))
+pander(tapply(chocolate, list(year.2, sex), function(x) format(mean(x, na.rm = TRUE), digits = 2, nsmall = 1)))
+```
+
+`kable` 을 사용하려면 `aggregate` 활용
+
+```{r, aggragate}
+chocolate.sex.ag <- aggregate(chocolate ~ sex, data = ew.gorilla.full, summary)
+names(chocolate.sex.ag)
+chocolate.sex.xtabs <- xtabs(chocolate ~ sex, chocolate.sex.ag)
+kable(chocolate.sex.xtabs)
+chocolate.year.ag <- aggregate(chocolate ~ year, data = ew.gorilla.full, summary)
+names(chocolate.year.ag)
+chocolate.year.xtabs <- xtabs(chocolate ~ year, chocolate.year.ag)
+kable(chocolate.year.xtabs)
+chocolate.year.2.ag <- aggregate(chocolate ~ year.2, data = ew.gorilla.full, summary)
+names(chocolate.year.2.ag)
+chocolate.year.2.xtabs <- xtabs(chocolate ~ year.2, chocolate.year.2.ag)
+kable(chocolate.year.2.xtabs)
 ```
 

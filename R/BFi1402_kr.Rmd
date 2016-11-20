@@ -10,7 +10,7 @@ Read Data
 
 ```{r}
 options(width=132)
-bfi<-read.table("BF201402.txt", header=TRUE)
+bfi<-read.table("../data/BF201402.txt", header=TRUE)
 ```
 
 
@@ -147,7 +147,7 @@ head(bfi.full.kr)
 ------------------------
 
 ```{r}
-MI<-read.table("MI1402.txt", header=T)
+MI<-read.table("../data/MI1402.txt", header=T)
 str(MI)
 head(MI)
 ```
