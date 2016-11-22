@@ -1,0 +1,72 @@
+
+
+<!--
+### Data
+
+
+성별 등 관련 자료가 들어 있는 `rda`파일들 읽어들이기
+
+```{r, data3}
+load("gorilla_1402.RData")
+load("east_west1402.RData")
+load("class_roll_1402.rda")
+ls()
+```
+
+자료를 합치기 위해 `plyr` 패키지를 검색 목록에
+
+```{r}
+library(plyr)
+```
+
+동과 서 자료에서 결석생들을 채워넣기 위하여 `join()` 적용.
+
+```{r}
+east.west.full<-join(class.roll, east.west.2, by="ID")
+str(east.west.full)
+```
+
+이름 변수가 중복되었으므로 하나 삭제
+
+```{r}
+east.west.full<-east.west.full[,-3]
+```
+
+이를 `gorilla` 자료와 합침.
+
+```{r}
+ew.gorilla.full<-join(east.west.full,gorilla, by="ID")
+str(ew.gorilla.full)
+attach(ew.gorilla.full)
+options(digits=2)
+```
+-->
+
+성별 차이, 학번별 차이를 파악하기 위하여 `tapply()` 활용
+
+```{r, tapply}
+kable(t(as.matrix(table("몇 개나 나눠줄래요?" = chocolate), 1)))
+kable(table("성별" = sex, "몇 개나 나눠줄래요?" = chocolate))
+pander(tapply(chocolate, sex, summary))
+pander(tapply(chocolate, year.2, summary))
+pander(tapply(chocolate, list(year, sex), function(x) format(mean(x, na.rm = TRUE), digits = 2, nsmall = 1)))
+pander(tapply(chocolate, list(year.2, sex), function(x) format(mean(x, na.rm = TRUE), digits = 2, nsmall = 1)))
+```
+
+`kable` 을 사용하려면 `aggregate` 활용
+
+```{r, aggragate}
+chocolate.sex.ag <- aggregate(chocolate ~ sex, data = ew.gorilla.full, summary)
+names(chocolate.sex.ag)
+chocolate.sex.xtabs <- xtabs(chocolate ~ sex, chocolate.sex.ag)
+kable(chocolate.sex.xtabs)
+chocolate.year.ag <- aggregate(chocolate ~ year, data = ew.gorilla.full, summary)
+names(chocolate.year.ag)
+chocolate.year.xtabs <- xtabs(chocolate ~ year, chocolate.year.ag)
+kable(chocolate.year.xtabs)
+chocolate.year.2.ag <- aggregate(chocolate ~ year.2, data = ew.gorilla.full, summary)
+names(chocolate.year.2.ag)
+chocolate.year.2.xtabs <- xtabs(chocolate ~ year.2, chocolate.year.2.ag)
+kable(chocolate.year.2.xtabs)
+```
+

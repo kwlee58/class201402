@@ -1,0 +1,24 @@
+---
+title: "Gorill_201402"
+author: "coop711"
+date: '`r Sys.Date()`'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+# install.packages("pander", repos = "https://cran.rstudio.com")
+# install.packages("xlsx", repos = "https://cran.rstudio.com")
+# library(xlsx)
+library(pander)
+library(knitr)
+panderOptions('table.split.table', Inf)
+panderOptions('table.alignment.rownames', 'left')
+panderOptions('table.alignment.default', 'right')
+options(width = 180)
+source("./R/addmargins_kr.R")
+source("./R/prop_percent.R")
+```
+
+```{r, child = c("./R/east_west_child.Rmd", "./R/gorilla_child.Rmd", "./R/chocolate_child.Rmd")}
+```

@@ -80,7 +80,6 @@ dump(list = "prop.percent", file = "./prop_percent.R")
 
 ```{r, east and west}
 kable(t(as.matrix(table(monkey), 1)))
-kable(as.table(t(as.matrix(paste(format(prop.table(table(monkey))*100, digits = 2, nsmall = 1), "%", sep = ""), 1)), dnn = dimnames(table(monkey))))
 kable(t(as.matrix(table(leader), 1)))
 kable(t(as.matrix(table(saucer), 1)))
 kable(table(saucer, monkey))
